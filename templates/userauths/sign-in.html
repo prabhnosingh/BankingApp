@@ -1,7 +1,7 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 {% block content %}
-      <!-- Login Reg start -->
+      <!-- Login Page Starts Here-->
       <section class="login-reg">
         <div class="overlay pt-120">
             <div class="container">
@@ -13,36 +13,35 @@
                     </div>
                     <div class="col-xl-5">
                         <div class="section-text text-center">
-                            <h5 class="sub-title">Account</h5>
-                            <h2 class="title">Welcome to Paylio</h2>
-{#                            <p class="dont-acc">Already have an account? <a href="{% url 'userauths:sign-in' %}">Login</a></p>#}
+                            <h5 class="sub-title">Welcome to Paylio</h5>
+                            <h2 class="title">Sign In</h2>
+                            <p class="dont-acc">Don't have an account yet? <a href="{% url 'userauths:sign-up' %}">Sign Up</a></p>
                             <!-- <div class="reg-google">
                                 <a href="javascript:void(0)"><i class="fab fa-google"></i>Sign up with Google</a>
                             </div>
                             <span class="or">Or Continue With</span> -->
                         </div>
 
+                        {% comment %}
+                        {% if messages %}
+                        {% for message in messages %}
+                            <strong>{{ message }}</strong>
+                        {% endfor %}
+                        {% endif %}
+
+                        {% endcomment %}
+
                         <form method="POST">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-12">
                                     <div class="single-input">
-                                        <label>Enter your Username</label>
-                                        {{form.username}}
+                                        <input type="text" required name="email" id="logemail" placeholder="Enter Your Email">
                                     </div>
                                     <div class="single-input">
-                                        <label>Enter Email</label>
-                                        {{form.email}}
+                                        <input type="password" required name="password" id="logpassword" placeholder="Enter Your Password">
                                     </div>
-                                    <div class="single-input">
-                                        <label>Enter Password</label>
-                                        {{form.password1}}
-                                    </div>
-                                    <div class="single-input">
-                                        <label>Confirm Password</label>
-                                        {{form.password2}}
-                                    </div>
-                                    <button class="cmn-btn w-100" type="submit">Sign Up</button>
+                                    <button class="cmn-btn w-100" type="submit">Login</button>
                                 </div>
                             </div>
                         </form>
@@ -51,5 +50,5 @@
             </div>
         </div>
     </section>
-    <!-- Login Reg end -->
+    <!-- Login Page Ends Here -->
  {% endblock content %}
