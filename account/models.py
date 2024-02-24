@@ -38,11 +38,24 @@ class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     account_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     account_number = ShortUUIDField(length=10, max_length=25, prefix="217", alphabet="123456789")
-    account_id = ShortUUIDField(Length=7, max_length=25, prefix="DEX", alphabet="1234567890")
+    account_id = ShortUUIDField(length=7, max_length=25, prefix="DEX", alphabet="1234567890")
     pin_number = ShortUUIDField(length=4, max_length=7, alphabet="1234567890")  # 2737
-    red_code = ShortUUIDField(length=10, max_length=7, alphabet="abcdefgh1234567890")  # 2737|
+    red_code = ShortUUIDField(length=10, max_length=20, alphabet="abcdefgh1234567890")  # 2737|
     account_status = models.CharField(max_length=100, choices=ACCOUNT_STATUS, default="in-active")
     date = models.DateTimeField(auto_now_add=True)
     kyc_submitted = models.BooleanField(default=False)
     kyc_confirmed = models.BooleanField(default=False)
-    recommended_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
+    recommended_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True, related_name="recommended_by")
+
+    class Meta:
+        ordering = ["-date"]
+
+    # def __self__(self):
+    #     try:
+    #         return self.user
+    #     except:
+    #         return "Account Model"
+
+    def __self__(self):
+        return f"{self.user}"
+
