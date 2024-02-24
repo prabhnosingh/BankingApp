@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from shortuuid.django_fields import ShortUUIDField
 from userauths.models import User
+from django.db.models.signals import post_save
 
 ACCOUNT_STATUS = (
     ("active", "Active"),
@@ -59,3 +60,14 @@ class Account(models.Model):
     def __self__(self):
         return f"{self.user}"
 
+
+def create_account(sender, instance, created, **kwargs):
+    if created:
+        Account.objects.create(user=instance)
+
+def save_account(sender, instance, **kwargs):
+    instance.account.save()
+
+
+post_save.connect(create_account, sender=User)
+post_save.connect(save_account, sender=User)
