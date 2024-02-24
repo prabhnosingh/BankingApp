@@ -130,8 +130,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]
 
-MEDIAURL = '/media/'
-MEDIA_ROOT = [os.path.join(BASE_DIR / 'media')]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -146,3 +146,4 @@ JAZZMIN_SETTINGS = {
     "copyright":"Copyright",
     # "order_with_respect_to": ["core",'userauths',"transactions",'addon','blog']
 }
+
