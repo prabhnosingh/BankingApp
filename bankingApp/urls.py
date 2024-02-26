@@ -26,5 +26,6 @@ urlpatterns = [
     path("contact/",views.contact,name="contact"),
     path("", include("core.urls")),
     path("user/", include("userauths.urls")),
+    path("account/", include("account.urls")),
 
     ]
