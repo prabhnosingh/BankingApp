@@ -5,25 +5,25 @@ from django.contrib import messages
 
 
 
-# #  Display the Account Details of the User in account.html template:
-# def account(request):
-#     if request.user.is_authenticated:
-#         try:
-#             kyc = KYC.objects.get(user=request.user)
-#         except:
-#             messages.warning(request, "You need to submit your kyc")
-#             return redirect("account:kyc-reg")
-#
-#         account = Account.objects.get(user=request.user)
-#     else:
-#         messages.warning(request, "You need to login to access the dashboard")
-#         return redirect("userauths:sign-in")
-#
-#     context = {
-#         "kyc": kyc,
-#         "account": account,
-#     }
-#     return render(request, "account/account.html", context)
+#  Display the Account Details of the User in account.html template:
+def account(request):
+    if request.user.is_authenticated:
+        try:
+            kyc = KYC.objects.get(user=request.user)
+        except:
+            messages.warning(request, "You need to submit your kyc")
+            return redirect("account:kyc-reg")
+
+        account = Account.objects.get(user=request.user)
+    else:
+        messages.warning(request, "You need to login to access the dashboard")
+        return redirect("userauths:sign-in")
+
+    context = {
+        "kyc": kyc,
+        "account": account,
+    }
+    return render(request, "account/account.html", context)
 
 
 
@@ -54,3 +54,5 @@ def kyc_registration(request):
     }
     return render(request, "account/kyc-form.html", context)
 
+def dashboard(request):
+    return render(request, "account/dashboard.html")
