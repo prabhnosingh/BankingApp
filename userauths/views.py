@@ -7,9 +7,9 @@ from userauths.forms import UserRegisterForm
 
 
 def RegisterView(request):
-    # if request.user.is_authenticated:
-    #     messages.warning(request, f"You are already logged in.")
-    #     return redirect("account:account")
+    if request.user.is_authenticated:
+        messages.warning(request, f"You are already logged in.")
+        return redirect("account:account")
 
     if request.method == "POST":
         form = UserRegisterForm(request.POST)
@@ -23,7 +23,7 @@ def RegisterView(request):
             new_user = authenticate(username=form.cleaned_data['email'],
                                     password=form.cleaned_data['password1'])
             login(request, new_user)
-            return redirect("core:index")
+            return redirect("account:account")
 
     else:
         form = UserRegisterForm()
@@ -45,21 +45,21 @@ def LoginView(request):
             if user is not None:  # if there is a user
                 login(request, user)
                 messages.success(request, "You are logged.")
-                return redirect("core:index")
+                return redirect("account:account")
             else:
                 messages.warning(request, "Username or password does not exist")
                 return redirect("userauths:sign-in")
         except:
             messages.warning(request, "User does not exist")
 
-    # if request.user.is_authenticated:
-    #     messages.warning(request, "You are already logged In")
-    #     return redirect("account:account")
+    if request.user.is_authenticated:
+        messages.warning(request, "You are already logged In")
+        return redirect("account:account")
 
     return render(request, "userauths/sign-in.html")
 
 
-def LogoutView(request):
+def logoutView(request):
     logout(request)
     messages.success(request, "You have been logged out.")
     return redirect("userauths:sign-in")
