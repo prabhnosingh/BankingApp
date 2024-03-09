@@ -11,8 +11,9 @@ def search_users_by_account_number(request):
     query=request.POST.get("account_number")
     if query:
         account=account.filter(
-            Q(account_number=query)
-        )
+            Q(account_number=query)|
+            Q(account_id=query)
+        ).distinct()
     context={
         "account":account,
     }
