@@ -3,6 +3,7 @@ import uuid
 from shortuuid.django_fields import ShortUUIDField
 from userauths.models import User
 from django.db.models.signals import post_save
+# from bankingApp.userauths.models import User
 
 ACCOUNT_STATUS = (
     ("active", "Active"),
