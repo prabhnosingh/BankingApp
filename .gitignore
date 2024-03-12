@@ -1,6 +1,6 @@
 core/migrations
 #Byte-compiled
-*/__pycache__/*
+*/__pycache__
 *.py[cod]
 
 #Django
@@ -18,3 +18,5 @@ venv/
 .venv/
 
 */migrations/*
+
+media/kyc/*

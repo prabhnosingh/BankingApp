@@ -11,3 +11,4 @@ To install dependencies run:
 8.  python manage.py migrate
 9.  python manage.py runserver
 10.  python manage.py createsuperuser
+
