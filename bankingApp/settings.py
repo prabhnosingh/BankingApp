@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     #My Custom Apps
     'core',
-    'userauths'
+    'userauths',
+    'account'
 ]
 
 MIDDLEWARE = [
@@ -129,13 +131,15 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR / 'static')]
 
-MEDIAURL = '/media/'
-MEDIA_ROOT = [os.path.join(BASE_DIR / 'media')]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'userauths.User'
 
 JAZZMIN_SETTINGS = {
     "site_header":"Paylio",
@@ -143,3 +147,4 @@ JAZZMIN_SETTINGS = {
     "copyright":"Copyright",
     # "order_with_respect_to": ["core",'userauths',"transactions",'addon','blog']
 }
+
