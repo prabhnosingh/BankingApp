@@ -1,4 +1,3 @@
-
 {% extends "partials/dashboard-base.html" %}
 {% load static %}
 {% load humanize %}
@@ -43,8 +42,7 @@
                             </div>
                         </div>
                     </div>
-                     <form action="#" method="POST">
-{#                    <form action="{% url 'core:amount-transfer-process' account.account_number  %}" method="POST">#}
+                    <form action="{% url 'core:amount-transfer-process' account.account_number  %}" method="POST">
                         {% csrf_token %}
                         <div class="send-banance">
                             <span class="mdr">You Send</span>
