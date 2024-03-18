@@ -9,25 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EasyPay</title>
 
-    <link rel="shortcut icon" href="{% static 'assets11/images/fav.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'assets1/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets1/css/fontawesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets1/css/jquery-ui.css' %}">
-    <link rel="stylesheet" href="{% static 'assets1/css/plugin/apexcharts.css' %}">
-    <link rel="stylesheet" href="{% static 'assets1/css/plugin/nice-select.css' %}">
-    <link rel="stylesheet" href="{% static 'assets1/css/arafat-font.css' %}">
-    <link rel="stylesheet" href="{% static 'assets1/css/plugin/animate.css' %}">
     <link rel="stylesheet" href="{% static 'assets1/css/style.css' %}">
 </head>
 
 <body>
-    <!-- start preloader -->
-    <!-- <div class="preloader" id="preloader"></div> -->
-    <!-- end preloader -->
-
-    <!-- Scroll To Top Start-->
-    <a href="javascript:void(0)" class="scrollToTop"><i class="fas fa-angle-double-up"></i></a>
-    <!-- Scroll To Top End -->
 
     <!-- header-section start -->
     <header class="header-section body-collapse">
@@ -39,83 +26,45 @@
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                         <div class="sidebar-logo">
-                          {% comment %}
                           <a href="{% url 'account:dashboard' %}"><img src="{% static 'assets1/images/logo1.jpeg' %}" alt="logo"></a>
-                          {% endcomment %}
-                          <a href=""><img src="{% static 'assets1/images/logo1.jpeg' %}" alt="logo"></a>
                         </div>
                         <ul>
                             <li>
-                                {% comment %}
-                                <a href="{% url 'account:dashboard' %}">
-                                    <img src="{% static 'assets1/images/icon/dashboard.png' %}" alt="Dashboard"> <span>Dashboard</span>
+                                <a href="{% url 'account:dashboard' %}">Dashboard
                                 </a>
-                                {% endcomment %}
+                            </li>
+                            <li>
                                 <a href="">
-                                    <img src="{% static 'assets1/images/icon/dashboard.png' %}" alt="Dashboard"> <span>Dashboard</span>
+                                    Transactions
                                 </a>
                             </li>
                             <li>
-                                {% comment %}
-                                <a href="{% url 'core:transactions' %}">
-                                    <img src="{% static 'assets1/images/icon/transactions.png' %}" alt="Transactions"> <span>Transactions</span>
-                                </a>
-                                {% endcomment %}
-                                <a href="">
-                                    <img src="{% static 'assets1/images/icon/transactions.png' %}" alt="Transactions"> <span>Transactions</span>
-                                </a>
-                            </li>
-                            <li>
-                                {% comment %}
                                 <a href="{% url 'core:search-account' %}">
-                                    <img src="{% static 'assets1/images/icon/pay.png' %}" alt="Pay"> <span>Pay</span>
-                                </a>
-                                {% endcomment %}
-                                <a href="{% url 'core:search-account' %}">
-                                    <img src="{% static 'assets1/images/icon/pay.png' %}" alt="Pay"> <span>Pay</span>
+                                    Pay
                                 </a>
                             </li>
                             <li>
-                                {% comment %}
                                 <a href="{% url 'core:request-search-account' %}">
-                                    <img src="{% static 'assets1/images/icon/receive.png' %}" alt="Receive"> <span>Receive</span>
-                                </a>
-                                {% endcomment %}
-                                <a href="">
-                                    <img src="{% static 'assets1/images/icon/receive.png' %}" alt="Receive"> <span>Receive</span>
+                                   Receive
                                 </a>
                             </li>
-                            
-                            <li>
-                                <a href="deposit-money.html">
-                                    <img src="{% static 'assets1/images/icon/deposit.png' %}" alt="Deposit"> <span>Deposit Money</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="withdraw-money-step-1.html">
-                                    <img src="{% static 'assets1/images/icon/withdraw.png' %}" alt="Withdraw"> <span>Withdraw Money</span>
-                                </a>
-                            </li>
+
                         </ul>
                         <ul class="bottom-item">
                             <li class="active">
-                              {% comment %}
+
                               <a href="{% url 'account:account' %}">
-                                <img src="{% static 'assets1/images/icon/account.png' %}" alt="Account"> <span>Account</span>
-                            </a>
-                              {% endcomment %}
-                              <a href="{% url 'account:account' %}">
-                                <img src="{% static 'assets1/images/icon/account.png' %}" alt="Account"> <span>Account</span>
+                                Account
                             </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="{% static 'assets1/images/icon/support.png' %}" alt="Support"> <span>Support</span>
+                                  Support
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)">
-                                    <img src="{% static 'assets1/images/icon/quit.png' %}" alt="Quit"> <span>Quit</span>
+                                  Quit
                                 </a>
                             </li>
                         </ul>
@@ -150,12 +99,6 @@
     <!--==================================================================-->
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
-    <script src="{% static 'assets/js/plugin/apexcharts.js' %}"></script>
-    <script src="{% static 'assets/js/plugin/jquery.nice-select.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugin/waypoint.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugin/wow.min.js' %}"></script>
-    <script src="{% static 'assets/js/plugin/plugin.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
