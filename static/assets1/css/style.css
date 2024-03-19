@@ -1,17 +1,8 @@
-/*============================================ 
-# Template Name: Paylio Admin Dashboard
-# Version: 1.0
-# Date: 26/04/2022
-# Author: pixelaxis
-# Author URI: https://themeforest.net/user/pixelaxis/portfolio
-# Developed By: Pranto
-# Description: Paylio - Money Transfer and Online Payments Dashboard HTML Template
-============================================*/
 
-/*============================================ 
+/*============================================
 ======== Table of Css Content =========
 # Typography
-# Normalize 
+# Normalize
 # Global style
 # Header Area
 # Banner Area
@@ -380,6 +371,10 @@ label {
     padding-top: 120px;
 }
 
+.pt-20 {
+    padding-top: 20px;
+}
+
 @media (max-width: 991px) {
     .pt-120 {
         padding-top: 60px;
@@ -437,43 +432,6 @@ label {
     background-color: #5732c6;
 }
 
-.scrollToTop {
-    position: fixed;
-    bottom: 0;
-    right: 30px;
-    width: 45px;
-    height: 45px;
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    color: #fff;
-    line-height: 45px;
-    font-size: 20px;
-    text-align: center;
-    z-index: 9;
-    cursor: pointer;
-    transition: all 1s;
-    transform: translateY(100%);
-}
-
-.scrollToTop i {
-    color: var(--bs-white);
-}
-
-.scrollToTop.active {
-    bottom: 30px;
-    transform: translateY(0%);
-}
-
-.preloader {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 99999999;
-    overflow: visible;
-    background: url(../images/preloader.gif) no-repeat center center;
-    background-size: 30%;
-    background-color: #F8F8F7;
-}
 
 .icon-svg {
     position: relative;
@@ -537,8 +495,8 @@ label {
     padding: 10px 30px;
     font-weight: 600;
     text-align: center;
-    background: var(--primary-color);
-    color: var(--bs-white);
+    /*background: var(--primary-color);*/
+    /*color: var(--bs-white);*/
     transition: 0.3s;
     border-radius: 10px;
     border: 1px solid transparent;
@@ -547,27 +505,27 @@ label {
     align-items: center;
 }
 
-.cmn-btn:hover {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--para-color);
-}
+/*.cmn-btn:hover {*/
+/*    background: transparent;*/
+/*    border: 1px solid var(--border-color);*/
+/*    color: var(--para-color);*/
+/*}*/
 
-.cmn-btn img,
-.cmn-btn i {
-    margin-left: 10px;
-}
+/*.cmn-btn img,*/
+/*.cmn-btn i {*/
+/*    margin-left: 10px;*/
+/*}*/
 
-.cmn-btn.active {
-    background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--para-color);
-}
+/*.cmn-btn.active {*/
+/*    background-color: transparent;*/
+/*    border: 1px solid var(--border-color);*/
+/*    color: var(--para-color);*/
+/*}*/
 
-.cmn-btn.active:hover {
-    background: var(--primary-color);
-    color: var(--bs-white);
-}
+/*.cmn-btn.active:hover {*/
+/*    background: var(--primary-color);*/
+/*    color: var(--bs-white);*/
+/*}*/
 
 @keyframes spin {
     from {
@@ -602,15 +560,6 @@ label {
     }
     100% {
         transform: scale(1);
-    }
-    -0% {
-        transform: scale(1);
-    }
-    -50% {
-        transform: scale(0.8);
-    }
-    -100% {
-        transform: scale(0.5);
     }
 }
 
@@ -660,10 +609,6 @@ label {
 
 .header-section .navbar-toggler:focus {
     box-shadow: none;
-}
-
-.header-section .navbar-toggler i {
-    color: var(--head-alt-color);
 }
 
 .header-section .navbar-area {
@@ -946,7 +891,7 @@ label {
     padding-bottom: 40px;
     margin-left: 140px;
     width: calc(100% - 140px);
-    transition: all 0.8s;
+    /*transition: all 0.8s;*/
 }
 
 .dashboard-section.body-collapse {
@@ -989,7 +934,7 @@ label {
 }
 
 .dashboard-section .acc-details {
-    background: #4341cc;
+    background: darkslategrey;
     border-radius: 10px;
 }
 
@@ -997,7 +942,8 @@ label {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
+    padding: 20px;
+    padding-bottom: 0px;
 }
 
 .dashboard-section .acc-details .top-area h5,
@@ -1047,15 +993,6 @@ label {
     font-weight: 600;
 }
 
-.dashboard-section .acc-details .top-area .nice-select .current::before {
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 30px;
-    left: -40px;
-    background-image: url(../images/icon/flag-usa.png);
-    background-repeat: no-repeat;
-}
 
 .dashboard-section .acc-details .top-area .nice-select .list {
     width: 100%;
@@ -1079,7 +1016,6 @@ label {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #5654D1;
     padding: 15px;
     margin-top: 40px;
     border-radius: 10px;
@@ -1092,7 +1028,7 @@ label {
 .dashboard-section .acc-details .bottom-area .cmn-btn {
     margin-bottom: 15px;
     margin-right: 15px;
-    background-color: transparent;
+    /*background-color: transparent;*/
     border: 1px solid var(--border-color);
     color: var(--bs-white);
 }
@@ -1133,7 +1069,7 @@ label {
 }
 
 .dashboard-section .transactions-area .top-area ul li .nav-link.active {
-    color: #5B2EDF;
+    color: darkslategrey;
 }
 
 .dashboard-section .transactions-area .top-area .view-all {
@@ -1744,15 +1680,6 @@ label {
     font-weight: 600;
 }
 
-.dashboard-section.pay.step-2 .main-content .send-banance .nice-select .current::before {
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 30px;
-    left: -40px;
-    background-image: url(../images/icon/flag-usa.png);
-    background-repeat: no-repeat;
-}
 
 .dashboard-section.pay.step-2 .main-content .send-banance .nice-select .list {
     width: 100%;
@@ -1775,17 +1702,6 @@ label {
     align-items: center;
 }
 
-.dashboard-section.pay.step-2 .main-content .exchange-content .recipient::before {
-    position: absolute;
-    content: '';
-    width: 26px;
-    height: 26px;
-    left: -20px;
-    z-index: 1;
-    background-image: url(../images/icon/exchange-icon.png);
-    background-repeat: no-repeat;
-}
-
 .dashboard-section.pay.step-2 .main-content .exchange-content .recipient::after {
     position: absolute;
     content: '';
@@ -1795,10 +1711,6 @@ label {
     background-color: #5732C6;
     border: 6px solid var(--bs-white);
     border-radius: 25px;
-}
-
-.dashboard-section.pay.step-2 .main-content .exchange-content .recipient .nice-select .current::before {
-    background-image: url(../images/icon/flag-bd.png);
 }
 
 .dashboard-section.pay.step-2 .main-content .pay-option {
@@ -1992,17 +1904,6 @@ label {
     height: 105px;
     display: flex;
     align-items: center;
-}
-
-.dashboard-section.pay.receive-3 .attach-documents .file-upload .file .file-custom::before {
-    position: absolute;
-    left: 0;
-    background-image: url(../images/icon/upload-icons.png);
-    background-repeat: no-repeat;
-    content: "";
-    width: 70px;
-    height: 70px;
-    left: 20px;
 }
 
 .dashboard-section.pay.receive-3 .attach-documents .file-upload .file .file-custom2 {
@@ -2430,16 +2331,6 @@ label {
     font-weight: 600;
 }
 
-.dashboard-section.crypto .exchange-content .send-banance .nice-select .current::before {
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 30px;
-    left: -40px;
-    background-image: url(../images/icon/flag-usa.png);
-    background-repeat: no-repeat;
-}
-
 .dashboard-section.crypto .exchange-content .send-banance .nice-select .list {
     width: 100%;
 }
@@ -2449,18 +2340,6 @@ label {
     position: relative;
     display: grid;
     align-items: center;
-}
-
-.dashboard-section.crypto .exchange-content .recipient::before {
-    position: absolute;
-    content: '';
-    width: 26px;
-    height: 26px;
-    top: -22px;
-    left: calc(50% - -12px);
-    z-index: 1;
-    background-image: url(../images/icon/exchange-icon.png);
-    background-repeat: no-repeat;
 }
 
 .dashboard-section.crypto .exchange-content .recipient::after {
@@ -2473,10 +2352,6 @@ label {
     background-color: #5732C6;
     border: 6px solid var(--bs-white);
     border-radius: 25px;
-}
-
-.dashboard-section.crypto .exchange-content .recipient .nice-select .current::before {
-    background-image: url(../images/icon/flag-btc.png);
 }
 
 .dashboard-section.crypto .exchange-content .pay-details ul {
@@ -2602,13 +2477,6 @@ label {
     justify-content: center;
 }
 
-.dashboard-section.crypto .checkbox-single .checkmark::after {
-    width: 16px;
-    height: 16px;
-    background-image: url(../images/icon/check.png);
-    background-repeat: no-repeat;
-}
-
 .dashboard-section.crypto .checkbox-single input:checked~.checkmark {
     background: #571ce0;
 }
@@ -2681,16 +2549,6 @@ label {
 
 .dashboard-section.deposit-money .card-area input[type=radio]+label img {
     width: 100%;
-}
-
-.dashboard-section.deposit-money .card-area input[type=radio]:checked+label::before {
-    position: absolute;
-    content: '';
-    width: 16px;
-    height: 16px;
-    background-image: url(../images/icon/check-2.png);
-    background-repeat: no-repeat;
-    z-index: 2;
 }
 
 .dashboard-section.deposit-money .card-area input[type=radio]:checked+label::after {
@@ -2768,16 +2626,6 @@ label {
     font-weight: 600;
 }
 
-.dashboard-section.deposit-money .send-banance .nice-select .current::before {
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 30px;
-    left: -40px;
-    background-image: url(../images/icon/flag-usa.png);
-    background-repeat: no-repeat;
-}
-
 .dashboard-section.deposit-money .send-banance .nice-select .list {
     width: 100%;
 }
@@ -2829,11 +2677,11 @@ label {
 
 .dashboard-section.account .owner-details {
     background: var(--bs-white);
-    box-shadow: 0px 4px 26px rgba(165, 163, 235, 0.25);
+    /*box-shadow: 0px 4px 26px rgba(165, 163, 235, 0.25);*/
     border-radius: 10px;
     padding: 30px 20px;
     text-align: center;
-    position: sticky;
+    position: static;
     top: 100px;
 }
 
@@ -2914,7 +2762,7 @@ label {
 .dashboard-section.account .nav-tabs .nav-link.active {
     color: var(--bs-white);
     background: #5927E3;
-    box-shadow: 0px 8px 24px rgba(89, 39, 227, 0.42);
+    /*box-shadow: 0px 8px 24px rgba(89, 39, 227, 0.42);*/
 }
 
 .dashboard-section.account .upload-avatar {
@@ -3350,16 +3198,6 @@ label {
     display: flex;
     align-items: center;
     font-weight: 600;
-}
-
-.card-popup .modal-content .main-content .tab-content .nice-select .current::before {
-    position: absolute;
-    content: "";
-    width: 30px;
-    height: 30px;
-    left: -40px;
-    background-image: url(../images/icon/flag-usa.png);
-    background-repeat: no-repeat;
 }
 
 .card-popup .modal-content .main-content .tab-content .nice-select .list {
