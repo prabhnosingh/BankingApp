@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <form action="{% url 'core:amount-request' account.account_number  %}" method="POST">
+                    <form action="{% url 'core:amount-request-process' account.account_number  %}" method="POST">
                         {% csrf_token %}
                         <div class="send-banance">
                             <span class="mdr">You Request</span>
@@ -49,7 +49,7 @@
                                 <select>
                                     <option value="1">USD</option>
                                     <option value="2">CAD</option>
-                                    
+                                    <option value="2">INR</option>
                                 </select>
                             </div>
                             
