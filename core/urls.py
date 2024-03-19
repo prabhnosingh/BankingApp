@@ -18,6 +18,8 @@ urlpatterns = [
 
     #request money
     path("request-search-account/", payment_request.SearchUsersRequest, name="request-search-account"),
+    path("amount-request/<account_number>/", payment_request.AmountRequest, name="amount-request"),
+
 
     #add debit card
 ]
