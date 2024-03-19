@@ -2,8 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-
-    <!-- Dashboard Section start -->
+    
     <section class="dashboard-section body-collapse">
         <div class="overlay pt-20">
             <div class="container-fruid">
@@ -83,7 +82,7 @@
                                                                 <p>-${{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class=""><span>View Details</span></a>
+                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=""><span>View Details</span></a>
 
                                                             </td>
                                                         </tr>
@@ -125,7 +124,7 @@
                                                                 <p>+${{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
-                                                                <a href="#" class="">View Details</a>
+                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class="">View Details</a>
                                                             </td>
                                                         </tr>
                                                     {% endfor %}
@@ -165,6 +164,20 @@
                                                                 <p>+${{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
+                                                                {% if s.status == "request_sent" %}
+                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class="btn btn-primary"></i> View</a>
+                                                                 <a href="#" class=" btn btn-danger">Delete</a>
+                                                                {% endif %}
+
+                                                                {% if s.status == "request_processing" %}
+                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class="btn btn-primary">View</a>
+                                                                 <a href="#" class=" btn btn-danger"> Delete</a>
+                                                                {% endif %}
+
+                                                                {% if s.status == "request_settled" %}
+                                                                <a class="btn btn-success"> Settled</a>
+                                                                {% endif %}
+
                                                               <!--logic--->
 
                                                             </td>
@@ -206,7 +219,14 @@
                                                                 <p>+${{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
+                                                                {% if s.status == "request_sent" %}
+                                                                    <a href="#" class="btn btn-primary"> Settle</a>
+                                                                    <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=" btn btn-danger"> <i class="fas fa-x"></i> Cancel</a>
+                                                                {% endif %}
 
+                                                                {% if s.status == "request_settled" %}
+                                                                    <a href="" class="btn btn-success"> Settled</a>
+                                                                {% endif %}
                                                                <!--logic-->
 
                                                             </td>
@@ -228,8 +248,5 @@
             </div>
         </div>
     </section>
-    <!-- Dashboard Section end -->
-
     
-    <!-- Transactions Popup start -->
     {% endblock content %}
