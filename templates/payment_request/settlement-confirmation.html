@@ -9,9 +9,7 @@
                 <div class="main-content">
                     <div class="head-area d-flex align-items-center justify-content-between">
                         <h4>Make a Payment</h4>
-                        <div class="icon-area">
-                            <img src="{% static 'assets/images/icon/support-icon.png' %}" alt="icon">
-                        </div>
+
                     </div>
                     <div class="choose-recipient">
                         <div class="step-area">
@@ -32,36 +30,25 @@
                                         <span class="mdr">{{ account.user.email }}</span>
                                     </div>
                                 </div>
-                                <div class="right">
-                                    
-                                    <a href="{% url 'core:search-account' %}">
-                                        <i class="icon-h-edit"></i>
-                                        Edit
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                     <div class="payment-details">
                         <div class="top-area">
                             <h6>Payment Details</h6>
-                            <div class="right">
-                                <a href="javascript:void(0)">
-                                    <i class="icon-h-edit"></i>
-                                    Edit
-                                </a>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
                                 <ul class="details-list">
                                     <li>
                                         <span>You Send</span>
-                                        <b>{{transaction.amount}} USD</b>
+                                        <b>{{transaction.amount}} CAD</b>
                                     </li>
                                     <li>
                                         <span>Recipient gets</span>
-                                        <b>{{transaction.amount}} USD</b>
+                                        <b>{{transaction.amount}} CAD</b>
                                     </li>
                                     <li>
                                         <span>E-mail of receiver</span>
@@ -84,10 +71,6 @@
                         </div>
                     </div>
                     <form action="#">
-                        <div class="checkbox">
-                            <input type="checkbox" id="confirm">
-                            <label for="confirm">I confirm the payment details above</label>
-                        </div>
                         <div class="footer-area mt-40">
                             <a href="{% url 'core:transactions' %}">Previous Step</a>
                             <a href="javascript:void(0)" class="transferMod active" data-bs-toggle="modal" data-bs-target="#transferMod">Settle Now</a>
@@ -122,10 +105,7 @@
                                 <div class="tab-pane fade show active" id="transfer" role="tabpanel" aria-labelledby="transfer-tab">
                                     <div class="modal-content">
                                         <div class="modal-header mb-60 justify-content-between">
-                                            <a href="javascript:void(0)">
-                                                <i class="icon-a-left-arrow"></i>
-                                                Back
-                                            </a>
+                                            
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                                         </div>
                                         <div class="main-content">
@@ -136,7 +116,7 @@
                                                 <div class="userInput">
                                                     <input minlength="4" maxlength="4" name="pin-number" type="text">
                                                 </div>
-                                                <a href="javascript:void(0)">Reset Pin Number?</a>
+                                                
                                                 <button type="submit" class="mt-60 confirm">Confirm</button>
                                             </form>
                                         </div>

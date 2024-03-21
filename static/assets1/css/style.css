@@ -2667,10 +2667,10 @@ label {
 .dashboard-section.account::before {
     content: "";
     position: absolute;
-    background: #5732C6;
+    background: darkslategrey;
     top: 0;
     left: 0;
-    height: 270px;
+    height: 300px;
     z-index: -1;
     width: 100%;
 }

@@ -4,14 +4,12 @@
 {% block content %}
     <!-- Dashboard Section start -->
     <section class="dashboard-section body-collapse pay step step-2 step-3">
-        <div class="overlay pt-120">
+        <div class="overlay pt-20">
             <div class="container-fruid">
                 <div class="main-content">
                     <div class="head-area d-flex align-items-center justify-content-between">
-                        <h4>Make a Payment</h4>
-                        <div class="icon-area">
-                            <img src="{% static 'assets/images/icon/support-icon.png' %}" alt="icon">
-                        </div>
+                        <h4>Request a Payment</h4>
+
                     </div>
                     <div class="choose-recipient">
                         <div class="step-area">
@@ -45,19 +43,14 @@
                     <div class="payment-details">
                         <div class="top-area">
                             <h6>Payment Details</h6>
-                            <div class="right">
-                                <a href="javascript:void(0)">
-                                    <i class="icon-h-edit"></i>
-                                    Edit
-                                </a>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-xl-6">
                                 <ul class="details-list">
                                     <li>
                                         <span>You Requested</span>
-                                        <b>{{transaction.amount}} USD</b>
+                                        <b>{{transaction.amount}} CAD</b>
                                     </li>
                                    
                                     <li>
@@ -81,13 +74,9 @@
                         </div>
                     </div>
                     <form action="#">
-                        <div class="checkbox">
-                            <input type="checkbox" id="confirm">
-                            <label for="confirm">I confirm the payment details above</label>
-                        </div>
                         <div class="footer-area mt-40">
-                            <a href="pay-step-2.html">Previous Step</a>
-                            <a href="javascript:void(0)" class="transferMod active" data-bs-toggle="modal" data-bs-target="#transferMod">Pay</a>
+                            <a href="{% url 'core:request-search-account' %}">Abort</a>
+                            <a href="javascript:void(0)" class="transferMod active" data-bs-toggle="modal" data-bs-target="#transferMod">Request</a>
                         </div>
                     </form>
                 </div>
@@ -118,14 +107,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="transfer" role="tabpanel" aria-labelledby="transfer-tab">
                                     <div class="modal-content">
-                                        <div class="modal-header mb-60 justify-content-between">
-                                            <a href="javascript:void(0)">
-                                                <i class="icon-a-left-arrow"></i>
-                                                Back
-                                            </a>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-                                        </div>
-                                        <div class="main-content">
+{#                                                                                <div class="main-content">
                                             <h4>Confirm Request</h4>
                                             <p>Enter your pin below</p>
                                             <form action= "{% url 'core:amount-request-final-process' account.account_number transaction.transaction_id %}" method="POST">
@@ -133,7 +115,6 @@
                                                 <div class="userInput">
                                                     <input minlength="4" maxlength="4" name="pin-number" type="text">
                                                 </div>
-                                                <a href="javascript:void(0)">Reset Pin Number?</a>
                                                 <button type="submit" class="mt-60 confirm">Confirm</button>
                                             </form>
                                         </div>
