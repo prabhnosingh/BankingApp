@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="right">
                                     
-                                    <a href="{% url 'core:search-account' %}">
+                                    <a href="{% url 'core:request-search-account' %}">
                                         <i class="icon-h-edit"></i>
                                         Edit
                                     </a>
@@ -46,11 +46,9 @@
                             <span class="mdr">You Request</span>
                             <div class="input-area">
                                 <input class="xxlr" placeholder="Enter Amount Request" type="number" name="amount-request" id="amount-request">
-                                <select>
-                                    <option value="1">USD</option>
-                                    <option value="2">CAD</option>
-                                    <option value="2">INR</option>
-                                </select>
+                                <span class="material-symbols-outlined">
+attach_money
+</span>
                             </div>
                             
                         </div>

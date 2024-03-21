@@ -142,8 +142,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'userauths.User'
 
 JAZZMIN_SETTINGS = {
-    "site_header":"Paylio",
-    "site_brand":"Payment Made Easy...",
+    "site_header":"EasyPay",
+    "site_brand":"EasyPay...",
     "copyright":"Copyright",
     # "order_with_respect_to": ["core",'userauths',"transactions",'addon','blog']
 }

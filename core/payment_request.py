@@ -43,32 +43,34 @@ def AmountRequestProcess(request, account_number):
 
     sender_account = request.user.account
     reciever_account = account
+    if sender_account.account_status == 'active':
+        if request.method == "POST":
+            amount = request.POST.get("amount-request")
+            description = request.POST.get("description")
 
-    if request.method == "POST":
-        amount = request.POST.get("amount-request")
-        description = request.POST.get("description")
+            new_request = Transaction.objects.create(
+                user=request.user,
+                amount=amount,
+                description=description,
 
-        new_request = Transaction.objects.create(
-            user=request.user,
-            amount=amount,
-            description=description,
+                sender=sender,
+                reciever=reciever,
 
-            sender=sender,
-            reciever=reciever,
+                sender_account=sender_account,
+                reciever_account=reciever_account,
 
-            sender_account=sender_account,
-            reciever_account=reciever_account,
-
-            status="request_processing",
-            transaction_type="request"
-        )
-        new_request.save()
-        transaction_id = new_request.transaction_id
-        return redirect("core:amount-request-confirmation", account.account_number, transaction_id)
+                status="request_processing",
+                transaction_type="request"
+            )
+            new_request.save()
+            transaction_id = new_request.transaction_id
+            return redirect("core:amount-request-confirmation", account.account_number, transaction_id)
+        else:
+            messages.warning(request, "Error Occurred, try again later.")
+            return redirect("account:dashboard")
     else:
-        messages.warning(request, "Error Occurred, try again later.")
-        return redirect("account:dashboard")
-
+        messages.warning(request, "You are not authorized yet")
+        return redirect("account:account")
 
 def AmountRequestConfirmation(request, account_number, transaction_id):
     account = Account.objects.get(account_number=account_number)
@@ -127,30 +129,34 @@ def settlement_processing(request, account_number, transaction_id):
     sender = request.user
     sender_account = request.user.account  ## me,
 
-    if request.method == "POST":
-        pin_number = request.POST.get("pin-number")
-        if pin_number == request.user.account.pin_number:
-            if sender_account.account_balance <= 0 or sender_account.account_balance < transaction.amount:
-                messages.warning(request, "Insufficient Funds, fund your account and try again.")
+    if sender_account.account_status == 'active':
+        if request.method == "POST":
+            pin_number = request.POST.get("pin-number")
+            if pin_number == request.user.account.pin_number:
+                if sender_account.account_balance <= 0 or sender_account.account_balance < transaction.amount:
+                    messages.warning(request, "Insufficient Funds, fund your account and try again.")
+                else:
+                    sender_account.account_balance -= transaction.amount
+                    sender_account.save()
+
+                    account.account_balance += transaction.amount
+                    account.save()
+
+                    transaction.status = "request_settled"
+                    transaction.save()
+
+                    messages.success(request, f"Settled to {account.user.kyc.full_name} was successfull.")
+                    return redirect("core:settlement-completed", account.account_number, transaction.transaction_id)
+
             else:
-                sender_account.account_balance -= transaction.amount
-                sender_account.save()
-
-                account.account_balance += transaction.amount
-                account.save()
-
-                transaction.status = "request_settled"
-                transaction.save()
-
-                messages.success(request, f"Settled to {account.user.kyc.full_name} was successfull.")
-                return redirect("core:settlement-completed", account.account_number, transaction.transaction_id)
-
+                messages.warning(request, "Incorrect Pin")
+                return redirect("core:settlement-confirmation", account.account_number, transaction.transaction_id)
         else:
-            messages.warning(request, "Incorrect Pin")
-            return redirect("core:settlement-confirmation", account.account_number, transaction.transaction_id)
+            messages.warning(request, "Error Occurred")
+            return redirect("account:dashboard")
     else:
-        messages.warning(request, "Error Occurred")
-        return redirect("account:dashboard")
+        messages.warning(request, "Account In-Active, Unable to Settle!")
+        return redirect("account:kyc-reg")
 
 
 def SettlementCompleted(request, account_number, transaction_id):

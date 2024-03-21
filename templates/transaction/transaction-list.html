@@ -30,10 +30,6 @@
                                             <button class="nav-link" id="reciever-request-tab" data-bs-toggle="tab" data-bs-target="#reciever-request" type="button" role="tab" aria-controls="upcoming" aria-selected="false">Received Requests</button>
                                         </li>
                                     </ul>
-                                    <div class="view-all d-flex align-items-center">
-                                        <a href="javascript:void(0)">View All</a>
-                                        <img src="{% static 'assets1/images/icon/right-arrow.png' %}" alt="icon">
-                                    </div>
                                 </div>
                                 <div class="tab-content mt-40">
                                     <div class="tab-pane fade show active" id="latest" role="tabpanel" aria-labelledby="latest-tab">
@@ -78,7 +74,7 @@
                                                                 <p>-${{s.amount|intcomma}}</p>
                                                             </td>
                                                             <td>
-                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=""><i class="fas fa-eye"></i></a>
+                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class="">View Detail</a>
 
                                                             </td>
                                                         </tr>

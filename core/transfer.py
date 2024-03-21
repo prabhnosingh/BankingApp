@@ -47,41 +47,45 @@ def AmountTransferProcess(request, account_number):
     sender_account = request.user.account  ## get the currently logged in users account that vould send the money
     reciever_account = account  # get the the person account that vould send the money
 
-    if request.method == "POST":
-        amount = request.POST.get("amount-send")
-        description = request.POST.get("description")
+    if sender_account.account_status == 'active':
+        if request.method == "POST":
+            amount = request.POST.get("amount-send")
+            description = request.POST.get("description")
 
-        print(amount)
-        print(description)
+            print(amount)
+            print(description)
 
-        if sender_account.account_balance >= Decimal(amount):
-            new_transaction = Transaction.objects.create(
-                user=request.user,
-                amount=amount,
-                description=description,
-                reciever=reciever,
-                sender=sender,
-                sender_account=sender_account,
-                reciever_account=reciever_account,
-                status="processing",
-                transaction_type="transfer"
-            )
-            new_transaction.save()
+            if sender_account.account_balance >= Decimal(amount):
+                new_transaction = Transaction.objects.create(
+                    user=request.user,
+                    amount=amount,
+                    description=description,
+                    reciever=reciever,
+                    sender=sender,
+                    sender_account=sender_account,
+                    reciever_account=reciever_account,
+                    status="processing",
+                    transaction_type="transfer"
+                )
+                new_transaction.save()
 
-            # Get the id of the transaction that vas created nov
-            transaction_id = new_transaction.transaction_id
-            print('debug3')
+                # Get the id of the transaction that vas created nov
+                transaction_id = new_transaction.transaction_id
+                print('debug3')
 
-            return redirect("core:transfer-confirmation", account.account_number, transaction_id)
-        else:
-            messages.warning(request, "Insufficient Fund.")
-            print('debug4')
+                return redirect("core:transfer-confirmation", account.account_number, transaction_id)
+            else:
+                messages.warning(request, "Insufficient Fund.")
+                print('debug4')
 
             return redirect("core:amount-transfer", account.account_number)
-    else:
-        messages.warning(request, "Error Occured, Try again later.")
-        print('debug5')
+        else:
+            messages.warning(request, "Error Occured, Try again later.")
+            print('debug5')
 
+            return redirect("account:account")
+    else:
+        messages.warning(request, "Not an Active User")
         return redirect("account:account")
 
 
