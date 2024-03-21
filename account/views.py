@@ -3,7 +3,7 @@ from account.models import KYC, Account
 from core.models import Transaction
 from account.forms import KYCForm
 from django.contrib import messages
-
+from core.forms import CreditCardForm
 
 
 #  Display the Account Details of the User in account.html template:
@@ -81,6 +81,18 @@ def dashboard(request):
 
         account = Account.objects.get(user=request.user)
 
+        if request.method =="POST":
+            form = CreditCardForm(request.POST)
+            if form.is_valid():
+                new_form = form.save(commit=False)
+                new_form.user = request.user
+                new_form.save()
+
+                card_is = new_form.card_id
+                messages.success(request, "Card Details Submitted Successfully")
+                return redirect("account:dashboard")
+        else:
+            form = CreditCardForm()
     else:
         messages.warning(request, "You need to login to access the dashboard")
         return redirect("userauths:sign-in")
@@ -90,6 +102,7 @@ def dashboard(request):
         "account": account,
         "sender_transaction": sender_transaction,
         "reciever_transaction": reciever_transaction,
+        'form': form,
 
         'request_sender_transaction': request_sender_transaction,
         'request_reciever_transaction': request_reciever_transaction,
