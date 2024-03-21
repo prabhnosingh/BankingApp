@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
-    
+
     <section class="dashboard-section body-collapse">
         <div class="overlay pt-20">
             <div class="container-fruid">
@@ -19,6 +19,24 @@
                                     <div class="left-side">
                                         <h5>Hi, {{kyc.full_name|title}}!</h5>
                                         <h2>${{account.account_balance|intcomma}}</h2>
+
+                                        {% for recent_recieved_transfer in recent_recieved_transfer %}
+                                        <h5 class="receive">Last Received <span>${{recent_recieved_transfer.amount|intcomma}}</span></h5>
+
+                                        {% endfor %}
+
+                                    </div>
+                                    <div class="right-side">
+
+
+                                        <div class="right-bottom">
+
+                                            {% for recent_transfer in recent_transfer %}
+                                                <h4><small>${{recent_transfer.amount|intcomma}}</small></h4>
+                                            {% endfor %}
+                                            <h5><small>Recent Transfer</small></h5>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="bottom-area">
@@ -28,6 +46,7 @@
 
                                     </div>
                                 </div>
+
                             </div>
                             <div class="transactions-area">
                                 <div class="section-text">
@@ -233,7 +252,7 @@
                                                             </td>
                                                             <td>
                                                                 {% if s.status == "request_sent" %}
-                                                                    <a href="#" class="btn btn-primary"> Settle</a>
+                                                                    <a href="{% url 'core:settlement-processing' s.account_number s.transaction_id %}" class="btn btn-primary"> Settle</a>
                                                                     <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=" btn btn-danger"> <i class="fas fa-x"></i> Cancel</a>
                                                                 {% endif %}
 
@@ -267,22 +286,23 @@
                                             </button>
 
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="row">
 
 
                                     {% for c in credit_card %}
-                                        <a href="{% url 'core:card-detail' c.card_id %}">
+
                                             <div class="col-12">
-                                                <div class="card__main">
+<!--                                                <div class="card__main">-->
                                                     <div class="{% if c.card_type == 'verve' %}Front_card{% endif %}    {% if c.card_type == 'master' %}masterCard{% endif %}    {% if c.card_type == 'visa' %}visaCard{% endif %}">
                                                     <div class="top_card">
                                                         <span class="visa">{{c.card_type|upper}}</span>
-                                                        <div class="logo">
-                                                            <img src="{% static 'assets1/images/logo.png' %}" class="logo" alt="logo">
+<!--                                                        <div class="logo">-->
+<!--                                                            <img src="{% static 'assets1/images/logo.png' %}" class="logo" alt="logo">-->
 
-                                                        </div>
+<!--                                                        </div>-->
                                                     </div>
                                                     <div class="middle_card">
                                                         <span class="chip"></span>
@@ -294,11 +314,11 @@
                                                         <div class="card_holder_name">{{c.name}}</div>
                                                         </div>
                                                         <div class="card_info">
-                                                        <div class="card_holder_info">
+<!--                                                        <div class="card_holder_info">-->
                                                             <span class="expire_month" >{{c.month}}</span>
                                                             <span class="slash">/</span>
                                                             <span class="expire_year">{{c.year}}</span>
-                                                        </div>
+<!--                                                        </div>-->
                                                         </div>
                                                     </div>
                                                     </div>
@@ -320,15 +340,15 @@
                                                         </div>
                                                     </div>
                                                     </div>
-                                                </div>
+<!--                                                </div>-->
                                             </div>
-                                        </a>
+
                                     {% endfor %}
 
                                     <div class="col-4">
                                         <div class="single-card">
                                             <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#addcardMod">
-                                                <img src="{% static 'assets1/images/add-new.png' %}" alt="image" class="w-100">
+                                                <img src="{% static 'assets1/images/add-new.png' %}" alt="image" class="w-100" style="margin-top: 40px">
                                             </button>
                                         </div>
                                     </div>
@@ -363,12 +383,12 @@
                                     </div>
                                     <div class="tab-area d-flex align-items-center justify-content-between">
                                         <ul class="nav nav-tabs mb-30" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="btn-link" id="cancel-tab" data-bs-toggle="tab" data-bs-target="#cancel" type="button" role="tab" aria-controls="cancel" aria-selected="false">
-                                                    <img src="{% static 'assets1/images/icon/limit.png' %}" alt="icon">
-                                                    Set transfer limit
-                                                </button>
-                                            </li>
+<!--                                            <li class="nav-item" role="presentation">-->
+<!--                                                <button class="btn-link" id="cancel-tab" data-bs-toggle="tab" data-bs-target="#cancel" type="button" role="tab" aria-controls="cancel" aria-selected="false">-->
+<!--                                               -->
+<!--                                                    Set transfer limit-->
+<!--                                                </button>-->
+<!--                                            </li>-->
                                             <li class="nav-item" role="presentation">
                                                 <button class="d-none" id="limit-tab" data-bs-toggle="tab" data-bs-target="#limit" type="button" role="tab" aria-controls="limit" aria-selected="true"></button>
                                             </li>
@@ -533,5 +553,5 @@
             </div>
         </div>
     </div>
-    
+
     {% endblock content %}

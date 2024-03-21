@@ -4,7 +4,7 @@ from core.models import Transaction
 from account.forms import KYCForm
 from django.contrib import messages
 from core.forms import CreditCardForm
-
+from core.models import CreditCard
 
 #  Display the Account Details of the User in account.html template:
 def account(request):
@@ -80,6 +80,7 @@ def dashboard(request):
         request_reciever_transaction = Transaction.objects.filter(reciever=request.user, transaction_type="request")
 
         account = Account.objects.get(user=request.user)
+        credit_card = CreditCard.objects.filter(user=request.user)
 
         if request.method =="POST":
             form = CreditCardForm(request.POST)
@@ -103,6 +104,7 @@ def dashboard(request):
         "sender_transaction": sender_transaction,
         "reciever_transaction": reciever_transaction,
         'form': form,
+        "credit_card": credit_card,
 
         'request_sender_transaction': request_sender_transaction,
         'request_reciever_transaction': request_reciever_transaction,
