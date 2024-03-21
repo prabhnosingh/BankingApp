@@ -1034,7 +1034,7 @@ label {
 }
 
 .dashboard-section .acc-details .bottom-area .cmn-btn:hover {
-    background-color: var(--primary-color);
+    background-color:#802525;
 }
 
 .dashboard-section .transactions-area {
@@ -2167,7 +2167,7 @@ label {
 }
 
 .dashboard-section.crypto .left-area ul li a.active button {
-    color: #23262F;
+    color: #5B2EDF;
     font-weight: 600;
 }
 
@@ -2646,7 +2646,7 @@ label {
 }
 
 .dashboard-section.deposit-money .checkbox-area label a {
-    color: #5732C6;
+    color: darkslategray;
     font-weight: 600;
 }
 
@@ -2761,7 +2761,7 @@ label {
 
 .dashboard-section.account .nav-tabs .nav-link.active {
     color: var(--bs-white);
-    background: #5927E3;
+    background: #802525;
     /*box-shadow: 0px 8px 24px rgba(89, 39, 227, 0.42);*/
 }
 
