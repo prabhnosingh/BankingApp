@@ -131,18 +131,18 @@ def delete_card(request, card_id):
         account.account_balance += credit_card.amount
         account.save()
 
-        Notification.objects.create(
-            user=request.user,
-            notification_type="Deleted Credit Card"
-        )
+        # Notification.objects.create(
+        #     user=request.user,
+        #     notification_type="Deleted Credit Card"
+        # )
 
         credit_card.delete()
         messages.success(request, "Card Deleted Successfull")
         return redirect("account:dashboard")
-    Notification.objects.create(
-        user=request.user,
-        notification_type="Deleted Credit Card"
-    )
+    # Notification.objects.create(
+    #     user=request.user,
+    #     notification_type="Deleted Credit Card"
+    # )
     credit_card.delete()
     messages.success(request, "Card Deleted Successfull")
     return redirect("account:dashboard")
