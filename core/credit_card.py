@@ -118,3 +118,31 @@ def withdraw_fund(request, card_id):
         else:
             messages.warning(request, "Insufficient Funds")
             return redirect("core:card-detail", credit_card.card_id)
+
+
+def delete_card(request, card_id):
+    credit_card = CreditCard.objects.get(card_id=card_id, user=request.user)
+
+    # New Feature
+    # BEfore deleting card, it'll be nice to transfer all the money from the card to the main account balance.
+    account = request.user.account
+
+    if credit_card.amount > 0:
+        account.account_balance += credit_card.amount
+        account.save()
+
+        Notification.objects.create(
+            user=request.user,
+            notification_type="Deleted Credit Card"
+        )
+
+        credit_card.delete()
+        messages.success(request, "Card Deleted Successfull")
+        return redirect("account:dashboard")
+    Notification.objects.create(
+        user=request.user,
+        notification_type="Deleted Credit Card"
+    )
+    credit_card.delete()
+    messages.success(request, "Card Deleted Successfull")
+    return redirect("account:dashboard")
