@@ -27,7 +27,7 @@
                                                                 <div class="col-sm-5 text-center">
                                                                     <div class="icon-area p-3">
                                                                         <div class="col-12">
-                                                                            <div >
+                                                                            <div>
                                                                                 <div class="{% if credic_card.card_type == 'verve' %}Front_card{% endif %}    {% if credic_card.card_type == 'master' %}masterCard{% endif %}    {% if credic_card.card_type == 'visa' %}visaCard{% endif %}">
                                                                                 <div class="top_card">
                                                                                     <span class="visa">{{credic_card.card_type|upper}}</span>
@@ -111,7 +111,9 @@
                                                                                         <button type="button" class="reg btn btn-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#withdraw_fund">
                                                                                             Withdraw
                                                                                         </button>
-
+                                                                                        <a href="" class="reg btn btn-danger w-100 mb-2">
+                                                                                            Delete Card
+                                                                                        </a>
                                                                                 </div>
 
 
@@ -149,7 +151,40 @@
                                 <h6>Fund Credit Card</h6>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                             </div>
-
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="cardNumber">Card Number</label>
+                                            <input type="text" id="cardNumber" value="{{ credic_card.number }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="cardHolder">Card Holder</label>
+                                            <input type="text" id="cardHolder" value="{{ credic_card.name|title }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="month">Paylio Available Balance</label>
+                                            <input type="text" id="month" value="${{ account.account_balance|intcomma }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="year">Enter Amount</label>
+                                            <input type="number" name="funding_amount"  id="amount" placeholder="$20">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="btn-border w-100">
+                                            <button type="submit" class="cmn-btn w-100">Confirm Transaction</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -157,12 +192,51 @@
         </div>
     </div>
 </div>
-
 <!-- Add Card Popup start -->
 
 
 
  <!-- Add Card Popup start -->
+ <div class="add-card">
+    <div class="container-fruid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="modal fade" id="withdraw_fund" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header justify-content-between">
+                                <h6>Withdraw from Card</h6>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="row justify-content-center">
 
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="month">Card's Available Balance</label>
+                                            <input type="text" id="month" value="${{ credic_card.amount|intcomma }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="single-input">
+                                            <label for="year">Enter Amount</label>
+                                            <input type="number" name="amount" id="amount" placeholder="$20">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="btn-border w-100">
+                                            <button class="cmn-btn w-100">Confirm Transaction</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Add Card Popup start -->
 {% endblock content %}
