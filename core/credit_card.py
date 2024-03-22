@@ -47,6 +47,20 @@ def delete_card(request, card_id):
     messages.success(request, "Card Deleted Successfull")
     return redirect("account:dashboard")
 
+NOTIFICATION_TYPE = (
+    ("None", "None"),
+    ("Transfer", "Transfer"),
+    ("Credit Alert", "Credit Alert"),
+    ("Debit Alert", "Debit Alert"),
+    ("Sent Payment Request", "Sent Payment Request"),
+    ("Recieved Payment Request", "Recieved Payment Request"),
+    ("Funded Credit Card", "Funded Credit Card"),
+    ("Withdrew Credit Card Funds", "Withdrew Credit Card Funds"),
+    ("Deleted Credit Card", "Deleted Credit Card"),
+    ("Added Credit Card", "Added Credit Card"),
+
+)
+
 
 def fund_credit_card(request, card_id):
     credit_card = CreditCard.objects.get(card_id=card_id, user=request.user)
@@ -74,3 +88,33 @@ def fund_credit_card(request, card_id):
             messages.warning(request, "Insufficient Funds")
             return redirect("core:card-detail", credit_card.card_id)
 
+
+def withdraw_fund(request, card_id):
+    account = Account.objects.get(user=request.user)
+    credit_card = CreditCard.objects.get(card_id=card_id, user=request.user)
+
+    if request.method == "POST":
+        amount = request.POST.get("amount")
+        print(amount)
+
+        if credit_card.amount >= Decimal(amount) and credit_card.amount != 0.00:
+            account.account_balance += Decimal(amount)
+            account.save()
+
+            credit_card.amount -= Decimal(amount)
+            credit_card.save()
+
+            # Notification.objects.create(
+            #     user=request.user,
+            #     amount=amount,
+            #     notification_type="Withdrew Credit Card Funds"
+            # )
+
+            messages.success(request, "Withdrawal Successfull")
+            return redirect("core:card-detail", credit_card.card_id)
+        elif credit_card.amount == 0.00:
+            messages.warning(request, "Insufficient Funds")
+            return redirect("core:card-detail", credit_card.card_id)
+        else:
+            messages.warning(request, "Insufficient Funds")
+            return redirect("core:card-detail", credit_card.card_id)
