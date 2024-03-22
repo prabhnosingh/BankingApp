@@ -1,8 +1,6 @@
 from django.urls import path
-from core import views
-from core import transfer, transaction, payment_request
-from core import credit_card
 
+from core import transfer, transaction, payment_request, views, credit_card
 
 app_name = 'core'
 urlpatterns = [
@@ -35,9 +33,12 @@ urlpatterns = [
 
     path("settlement-confirmation/<account_number>/<transaction_id>/", payment_request.settlement_confirmation,
          name="settlement-confirmation"),
-    path("settlement-processing/<account_number>/<transaction_id>/", payment_request.settlement_processing, name="settlement-processing"),
-    path("settlement-completed/<account_number>/<transaction_id>/", payment_request.SettlementCompleted, name="settlement-completed"),
-    path("delete-request/<account_number>/<transaction_id>/", payment_request.deletepaymentrequest, name="delete-request"),
+    path("settlement-processing/<account_number>/<transaction_id>/", payment_request.settlement_processing,
+         name="settlement-processing"),
+    path("settlement-completed/<account_number>/<transaction_id>/", payment_request.SettlementCompleted,
+         name="settlement-completed"),
+    path("delete-request/<account_number>/<transaction_id>/", payment_request.deletepaymentrequest,
+         name="delete-request"),
 
     # add debit card
 
@@ -45,5 +46,5 @@ urlpatterns = [
     path("card/<card_id>/", credit_card.card_detail, name="card-detail"),
     path("fund-credit-card/<card_id>/", credit_card.fund_credit_card, name="fund-credit-card"),
     # path("withdraw_fund/<card_id>/", credit_card.withdraw_fund, name="withdraw_fund"),
-    # path("delete_card/<card_id>/", credit_card.delete_card, name="delete_card"),
+    path("delete_card/<card_id>/", credit_card.delete_card, name="delete_card"),
 ]
