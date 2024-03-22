@@ -47,6 +47,20 @@ def delete_card(request, card_id):
     messages.success(request, "Card Deleted Successfull")
     return redirect("account:dashboard")
 
+NOTIFICATION_TYPE = (
+    ("None", "None"),
+    ("Transfer", "Transfer"),
+    ("Credit Alert", "Credit Alert"),
+    ("Debit Alert", "Debit Alert"),
+    ("Sent Payment Request", "Sent Payment Request"),
+    ("Recieved Payment Request", "Recieved Payment Request"),
+    ("Funded Credit Card", "Funded Credit Card"),
+    ("Withdrew Credit Card Funds", "Withdrew Credit Card Funds"),
+    ("Deleted Credit Card", "Deleted Credit Card"),
+    ("Added Credit Card", "Added Credit Card"),
+
+)
+
 
 def fund_credit_card(request, card_id):
     credit_card = CreditCard.objects.get(card_id=card_id, user=request.user)
