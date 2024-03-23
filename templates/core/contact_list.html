@@ -1,0 +1,79 @@
+
+{% extends "partials/dashboard-base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+	<section class="dashboard-section body-collapse">
+        <div class="overlay pt-20">
+            <div class="container-fruid">
+             <div class="main-content">
+                    <div class="head-area d-flex align-items-center justify-content-between">
+<h3>Contact List</h3>
+                    </div>
+    <div class="tab-content mt-40">
+                                    <div class="tab-pane fade show active" id="latest" role="tabpanel" aria-labelledby="latest-tab">
+                                        <div class="table-responsive">
+                                            <table class="table">
+    
+        <thead>
+            <tr>
+                <th scope="col">Contact Name</th>
+                <th scope="col">Account Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.contact_name }}</td>
+                <td>{{ contact.account_number }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No contacts found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+                                        </div>
+                                    </div>
+    </div>
+
+<!-- Your contact form here -->
+
+                    
+             </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title>Contact List</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Contact List</h1>#}
+{#    <table border="1">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Contact Name</th>#}
+{#                <th>Account Number</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#            {% for contact in contacts %}#}
+{#            <tr>#}
+{#                <td>{{ contact.contact_name }}</td>#}
+{#                <td>{{ contact.account_number }}</td>#}
+{#            </tr>#}
+{#            {% empty %}#}
+{#            <tr>#}
+{#                <td colspan="2">No contacts found.</td>#}
+{#            </tr>#}
+{#            {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#</body>#}
+{#</html>#}
