@@ -4,7 +4,7 @@ from account.models import  Account
 from django.contrib.auth.decorators import  login_required
 from django.db.models import Q
 from django.contrib import messages
-from core.models import Transaction
+from core.models import Transaction,Contact
 from decimal import Decimal
 from django.utils import timezone
 from datetime import timedelta
@@ -13,6 +13,12 @@ from datetime import timedelta
 # @login_required
 def search_users_by_account_number(request):
     # account=Account.objects.filter(account_status="active")
+    contacts = Contact.objects.filter(user=request.user)
+    print(request.user)
+    for i in contacts:
+        print(i.contact_name)
+        print(i.account_number)
+
     account=Account.objects.all()
     query=request.POST.get("account_number")
     if query:
@@ -22,7 +28,8 @@ def search_users_by_account_number(request):
         ).distinct()
     context={
         "account":account,
-        "query":query
+        "query":query,
+        "contacts":contacts
     }
     print('debug1')
     return render(request,"transfer/search-user-by-account-number.html", context)

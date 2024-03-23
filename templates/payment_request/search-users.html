@@ -47,7 +47,30 @@
                             <h4 class="mt-4">Account does not exist</h4>
                         </div>
                         {% endfor %}
-                        {% endif %}
+                            
+                        {% else %}
+        <!-- Display saved contacts -->
+        {% for contact in contacts %}
+            <div class="single-user">
+                <div class="left d-flex align-items-center">
+                    <div class="img-area">
+                        <!-- Add the contact image if available -->
+                    </div>
+                    <div class="text-area">
+                        <p>{{ contact.contact_name }}</p>
+                        <span class="mdr"><b>{{ contact.account_number }}</b></span>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="{% url 'core:amount-transfer' contact.account_number  %}">Choose</a>
+                </div>
+            </div>
+        {% empty %}
+            <div>
+                <h4 class="mt-4">No saved contacts</h4>
+            </div>
+        {% endfor %}
+    {% endif %}
                     </div>
                     
                 </div>
