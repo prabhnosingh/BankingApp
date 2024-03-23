@@ -129,7 +129,7 @@ def settlement_processing(request, account_number, transaction_id):
     sender = request.user
     sender_account = request.user.account  ## me,
 
-    if sender_account.account_status == 'active':
+    if sender_account.account_status == 'active' and reciever_account.account_status == 'active':
         if request.method == "POST":
             pin_number = request.POST.get("pin-number")
             if pin_number == request.user.account.pin_number:
