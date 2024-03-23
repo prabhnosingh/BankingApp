@@ -31,6 +31,7 @@ class SupportCaseForm(forms.ModelForm):
         if account:
             self.fields['account'] = forms.CharField(initial=account.account_number, widget=forms.HiddenInput())
             self.fields['account_id'] = forms.CharField(initial=account.account_id, widget=forms.HiddenInput())
+
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
