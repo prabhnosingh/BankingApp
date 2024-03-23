@@ -1,5 +1,5 @@
 from django import forms
-from core.models import CreditCard, SupportCase
+from core.models import CreditCard, SupportCase,Contact
 
 
 class CreditCardForm(forms.ModelForm):
@@ -31,3 +31,8 @@ class SupportCaseForm(forms.ModelForm):
         if account:
             self.fields['account'] = forms.CharField(initial=account.account_number, widget=forms.HiddenInput())
             self.fields['account_id'] = forms.CharField(initial=account.account_id, widget=forms.HiddenInput())
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['contact_name', 'account_number']
