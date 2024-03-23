@@ -372,7 +372,7 @@ label {
 }
 
 .pt-20 {
-    padding-top: 20px;
+    padding-top: 80px;
 }
 
 @media (max-width: 991px) {
@@ -429,7 +429,7 @@ label {
 
 *::-webkit-scrollbar-button,
 *::-webkit-scrollbar-thumb {
-    background-color: #5732c6;
+    background-color: #802525;
 }
 
 
@@ -1372,7 +1372,7 @@ label {
 }
 
 .dashboard-section.transactions.recipients .filters-item {
-    background: #5732C6;
+    background: #802525;
     padding: 20px 30px;
     gap: 20px;
 }
@@ -1524,7 +1524,7 @@ label {
 
 .dashboard-section.pay.step .main-content .choose-recipient .recipient-list button.active,
 .dashboard-section.pay.step .main-content .choose-recipient .recipient-list button:hover {
-    background: linear-gradient(117.39deg, #5732C6 13.65%, #9A79FD 105.93%);
+    background: linear-gradient(117.39deg, #802525 13.65%, #9A79FD 105.93%);
 }
 
 .dashboard-section.pay.step .main-content .choose-recipient .recipient-list button.active i,
@@ -1577,15 +1577,8 @@ label {
 }
 
 .dashboard-section.pay.step .main-content .user-select .right a:hover {
-    background: #5732C6;
+    background: #802525;
     color: var(--bs-white);
-}
-
-.dashboard-section.pay.step .main-content .user-select .right a:hover::before {
-    position: absolute;
-    content: "\0047";
-    font-family: 'arafat font';
-    left: 35px;
 }
 
 .dashboard-section.pay.step .main-content form {
@@ -1708,7 +1701,7 @@ label {
     width: 50px;
     height: 50px;
     left: -30px;
-    background-color: #5732C6;
+    background-color: #802525;
     border: 6px solid var(--bs-white);
     border-radius: 25px;
 }
@@ -1823,7 +1816,7 @@ label {
 }
 
 .dashboard-section.pay.step-3 .payment-details .top-area a:hover {
-    background: #5732C6;
+    background: #802525;
     color: var(--bs-white);
 }
 
@@ -1984,12 +1977,12 @@ label {
 }
 
 .dashboard-section .footer-area a:hover {
-    background: #5732C6;
+    background: #802525;
     color: var(--bs-white);
 }
 
 .dashboard-section .footer-area a.active {
-    background: #5732C6;
+    background: #802525;
     color: var(--bs-white);
 }
 
@@ -2173,7 +2166,7 @@ label {
 
 .dashboard-section.crypto .left-area ul li a.active::before {
     position: absolute;
-    content: '\f00c';
+    /*content: '\f00c';*/
     font-family: 'font awesome 6 free';
     width: 30px;
     height: 30px;
@@ -2349,7 +2342,7 @@ label {
     height: 50px;
     left: calc(50%);
     top: -35px;
-    background-color: #5732C6;
+    background-color: #802525;
     border: 6px solid var(--bs-white);
     border-radius: 25px;
 }
@@ -3078,7 +3071,7 @@ label {
     content: '';
     width: 100%;
     height: 20%;
-    background: #5732C6;
+    background: #802525;
     top: 0;
     left: 0;
     z-index: -1;
@@ -3100,7 +3093,7 @@ label {
 }
 
 .card-popup .modal-content .main-content .tab-area ul li .btn-link {
-    color: #5732C6;
+    color: #802525;
     margin-right: 20px;
 }
 
@@ -3123,7 +3116,7 @@ label {
 }
 
 .card-popup .modal-content .main-content .bottom-area .history span {
-    color: #5732C6;
+    color: #802525;
 }
 
 .card-popup .modal-content .main-content .bottom-area li {
@@ -3477,7 +3470,7 @@ label {
 }
 
 .transfer-popup .modal-dialog .modal-content .main-content form button {
-    background: #5732C6;
+    background: #802525;
     border: 1px solid #AAA9E3;
     display: flex;
     border-radius: 10px;
@@ -3488,7 +3481,7 @@ label {
 }
 
 .transfer-popup .modal-dialog #success .modal-content {
-    background: #5732C6;
+    background: #802525;
     width: 180%;
 }
 
@@ -3543,7 +3536,7 @@ label {
 }
 
 .purchased-popup .modal-content {
-    background: #5732C6;
+    background: #802525;
     border-radius: 20px;
 }
 
@@ -3743,7 +3736,7 @@ label {
 
 .add-recipients .modal-dialog .modal-content .nav-tabs li button:hover,
 .add-recipients .modal-dialog .modal-content .nav-tabs li button.active {
-    background: #5732C6;
+    background: #802525;
     color: var(--bs-white);
 }
 

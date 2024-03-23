@@ -148,8 +148,21 @@
                                                                 <p><small>{{s.date|date:"h:i"}}</small></p>
                                                                 <p class="mdr">{{s.date|date:"d M, Y"}}</p>
                                                             </td>
-                                                            <td>
-                                                            <span>{{ s.status|title }}</span>
+                                                            </td>
+
+                                                                <td>
+                                                                {% if s.status == 'completed' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'pending' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'failed' %}
+                                                                    <p class="danger">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'processing' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
 
                                                             </td>
                                                             <td>
@@ -190,7 +203,27 @@
                                                                 <p class="mdr">{{s.date|date:"d M, Y"}}</p>
                                                             </td>
                                                             <td>
-                                                                <span>{{ s.status|title }}</span>
+                                                                {% if s.status == 'completed' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'pending' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'failed' %}
+                                                                    <p class="danger">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'processing' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'request_sent' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'request_settled' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'request_processing' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
                                                             </td>
                                                             <td>
                                                                 <p>+${{s.amount|intcomma}}</p>
@@ -244,8 +277,28 @@
                                                                 <p><small>{{s.date|date:"h:i"}}</small></p>
                                                                 <p class="mdr">{{s.date|date:"d M, Y"}}</p>
                                                             </td>
-                                                            <td>
-                                                                <span>{{ s.status|title }}</span>
+                                                           <td>
+                                                                {% if s.status == 'completed' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'pending' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'failed' %}
+                                                                    <p class="danger">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'processing' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'request_sent' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'request_settled' %}
+                                                                    <p class="text-success">{{s.status|title}}</p>
+                                                                {% endif %}
+                                                                {% if s.status == 'request_processing' %}
+                                                                    <p class="inprogress">{{s.status|title}}</p>
+                                                                {% endif %}
                                                             </td>
                                                             <td>
                                                                 <p>+${{s.amount|intcomma}}</p>
@@ -259,12 +312,12 @@
                                                                 {% if s.status == "request_settled" %}
                                                                     <a href="" class="btn btn-success"> Settled</a>
                                                                 {% endif %}
-                                                               <!--logic-->
+                                                               
 
                                                             </td>
                                                         </tr>
                                                     {% empty %}
-                                                    <li>No Received Requests</li>
+                                                        <ul><span>No Received Requests</span></ul>
                                                     {% endfor %}
 
                                                 </tbody>
