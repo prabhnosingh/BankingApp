@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.shortcuts import render, redirect
 from account.models import  Account
 from django.contrib.auth.decorators import  login_required
@@ -5,6 +6,8 @@ from django.db.models import Q
 from django.contrib import messages
 from core.models import Transaction
 from decimal import Decimal
+from django.utils import timezone
+from datetime import timedelta
 
 # @login_required
 # @login_required
@@ -35,59 +38,70 @@ def AmountTransfer(request, account_number):
         "account": account,
     }
     print('debug2')
+    if request.session.get('payment_in_progress') is None:
+        print(request.session, 'payment_in_progress')
+        # session expiration to 20 seconds from now, user will logout automatically
+        # request.session.set_expiry(20)
+        # Set session variable to indicate payment in progress
+        request.session['payment_in_progress'] = True
+        # Set session variable to store the timestamp when the session expires
+        request.session['_session_expiry_timestamp'] = int((timezone.now() + timedelta(seconds=20)).timestamp())
+        print('Session expiry set:', request.session['_session_expiry_timestamp'])
+    session_expiry_timestamp = request.session.get('_session_expiry_timestamp')
+    print("expiry time----", session_expiry_timestamp);
 
     return render(request, "transfer/amount-transfer.html", context)
 
 
 def AmountTransferProcess(request, account_number):
-    account = Account.objects.get(account_number=account_number)  ## Get the account that the money vould be sent to
-    sender = request.user  # get the person that is logged in
-    reciever = account.user  ##get the of the  person that is going to reciver the money
+    session_expiry_timestamp = request.session.get('_session_expiry_timestamp')
 
-    sender_account = request.user.account  ## get the currently logged in users account that vould send the money
-    reciever_account = account  # get the the person account that vould send the money
+    t = timezone.now().timestamp();
 
-    if sender_account.account_status == 'active':
-        if request.method == "POST":
-            amount = request.POST.get("amount-send")
-            description = request.POST.get("description")
+    if request.method == "POST" and session_expiry_timestamp and session_expiry_timestamp < t:
+        # Session has expired
+        messages.warning(request, "Session has expired. Please try again.")
+        request.session['payment_in_progress'] = None  # Reset session
+        request.session['_session_expiry_timestamp'] = 0  # Reset session expiry
+        print('Session expired, resetting session.')
 
-            print(amount)
-            print(description)
+        return redirect("core:search-account")
 
-            if sender_account.account_balance >= Decimal(amount):
+    account = Account.objects.get(account_number=account_number)
+    sender = request.user
+    sender_account = request.user.account
+
+    if sender_account.account_status != 'active':
+        messages.warning(request, "Not an Active User")
+        return redirect("account:account")
+
+    if request.method == "POST":
+        amount = request.POST.get("amount-send")
+        description = request.POST.get("description")
+        print(request.session, 'payment_in_progressjjjj')
+
+        if sender_account.account_balance >= Decimal(amount):
+            with transaction.atomic():
                 new_transaction = Transaction.objects.create(
                     user=request.user,
                     amount=amount,
                     description=description,
-                    reciever=reciever,
                     sender=sender,
                     sender_account=sender_account,
-                    reciever_account=reciever_account,
                     status="processing",
                     transaction_type="transfer"
                 )
-                new_transaction.save()
 
-                # Get the id of the transaction that vas created nov
+                # Get the id of the transaction that was created
                 transaction_id = new_transaction.transaction_id
-                print('debug3')
 
-                return redirect("core:transfer-confirmation", account.account_number, transaction_id)
-            else:
-                messages.warning(request, "Insufficient Fund.")
-                print('debug4')
-
-            return redirect("core:amount-transfer", account.account_number)
+            return redirect("core:transfer-confirmation", account.account_number, transaction_id)
         else:
-            messages.warning(request, "Error Occured, Try again later.")
-            print('debug5')
-
-            return redirect("account:account")
+            messages.warning(request, "Insufficient Fund.")
+            return redirect("core:amount-transfer", account.account_number)
     else:
-        messages.warning(request, "Not an Active User")
+        messages.warning(request, "Error Occurred, Try again later.")
         return redirect("account:account")
-
 
 def TransferConfirmation(request, account_number, transaction_id):
     try:
