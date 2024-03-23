@@ -1,5 +1,6 @@
 from django.urls import path
 
+import account
 from core import transfer, transaction, payment_request, views, credit_card
 
 app_name = 'core'
@@ -47,4 +48,6 @@ urlpatterns = [
     path("fund-credit-card/<card_id>/", credit_card.fund_credit_card, name="fund-credit-card"),
     path("withdraw_fund/<card_id>/", credit_card.withdraw_fund, name="withdraw_fund"),
     path("delete_card/<card_id>/", credit_card.delete_card, name="delete_card"),
+
+    path('support_page/', views.support_page, name='support_page')
 ]

@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from userauths.models import User
 from account.models import Account
@@ -72,3 +74,24 @@ class CreditCard(models.Model):
 
     def __str__(self):
         return f"{self.user}"
+
+class SupportCase(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    contact_number = models.CharField(max_length=20)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Generate Case ID if not provided
+            self.id = uuid.uuid4()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Case ID: {self.id} - Created At:{self.created_at} "
+
+    class Meta:
+        ordering = ['created_at']
