@@ -130,7 +130,7 @@ def settlement_processing(request, account_number, transaction_id):
 
     sender = request.user
     sender_account = request.user.account  ## me,
-
+    reciever_account = account  ## the person i want to send to
     if sender_account.account_status == 'active' and reciever_account.account_status == 'active':
         if request.method == "POST":
             pin_number = request.POST.get("pin-number")
