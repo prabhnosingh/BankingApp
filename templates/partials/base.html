@@ -64,12 +64,11 @@
 <!--                                        <li><a class="nav-link" href="fees.html">Fees</a></li>-->
 <!--                                    </ul>-->
 <!--                                </li>-->
-                                <li class="nav-item dropdown main-navbar">
-                                    <a class="nav-link dropdown-toggle"
-                                         >About Us</a>
-                                    <ul class="dropdown-menu main-menu shadow">
-                                        <li><a class="nav-link" href="{% url 'core:about_us' %}">About Us</a></li>
-                                        <li><a class="nav-link" href="career.html">Contact Us</a></li>
+                                <li class="nav-item main-navbar">
+                                   <a class="nav-link" href="{% url 'core:about_us' %}">About Us</a>
+{#                                    <ul class="dropdown-menu main-menu shadow">#}
+{#                                        <li><a class="nav-link" href="{% url 'core:about_us' %}">About Us</a></li>#}
+{#                                        <li><a class="nav-link" href="career.html">Contact Us</a></li>#}
 <!--                                        <li><a class="nav-link" href="career-details.html">Career Details</a></li>-->
 <!--                                        <li class="dropend sub-navbar">-->
 <!--                                            <a href="javascript:void(0)" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"-->
@@ -80,7 +79,7 @@
 <!--                                            </ul>-->
 <!--                                        </li>-->
 <!--                                        <li><a class="nav-link" href="error.html">Error</a></li>-->
-                                    </ul>
+{#                                    </ul>#}
                                 </li>
 <!--                                <li class="nav-item dropdown main-navbar">-->
 <!--                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)"-->
@@ -98,7 +97,7 @@
                                 <a href="{% url 'userauths:sign-out' %}" class="login cmn-btn">Sign Out</a>
                               
                                 {% else %}
-                               
+
                                 <a href="{% url 'userauths:sign-in' %}" class="login">Login</a>
                               
                                 <a href="{% url 'userauths:sign-up' %}" class="cmn-btn">Sign Up
