@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-xl-5">
                         <div class="section-text text-center">
-                            <h5 class="sub-title">Account</h5>
+<!--                            <h5 class="sub-title">Account</h5>-->
                             <h2 class="title">Welcome to EasyPay</h2>
 {#                            <p class="dont-acc">Already have an account? <a href="{% url 'userauths:sign-in' %}">Login</a></p>#}
                             <!-- <div class="reg-google">
@@ -21,7 +21,14 @@
                             </div>
                             <span class="or">Or Continue With</span> -->
                         </div>
+                        {% comment %}
+                        {% if messages %}
+                        {% for message in messages %}
+                            <strong>{{ message }}</strong>
+                        {% endfor %}
+                        {% endif %}
 
+                        {% endcomment %}
                         <form method="POST">
                             {% csrf_token %}
                             <div class="row">
