@@ -30,7 +30,7 @@
                 <td>{{ contact.account_number }}</td>
             <td> <form method="post" action="{% url 'core:delete_contact' contact.pk %}">
       {% csrf_token %}
-      <button type="submit">Delete</button><td>
+      <button type="submit" style="padding: 10px 30px; border-radius: 10px; background: #802525; color: #fff;">Delete</button><td>
             </tr>
             {% empty %}
             <tr>

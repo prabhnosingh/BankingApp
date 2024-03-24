@@ -1,0 +1,71 @@
+{%  extends 'partials/base.html' %}
+{% load static %}
+{% block title %}
+	About Us
+{% endblock title%}
+
+{% block content %}
+    <div class="container">
+    <div style="margin-bottom: 10%"></div>
+        <div class="row justify-content-between align-items-center">
+        <div class="col-md-8 text-center">
+            <h1 style="text-align: left">About Us</h1>
+            <p style="text-align: left">Our project aims to develop a comprehensive banking application using Django, offering a range of features to facilitate seamless financial transactions and user management. The application encompasses functionalities such as user authentication, online Know Your Customer (KYC) registration, fund transfers, payment requests, transaction history tracking, and management of credit/debit cards.</p>
+        </div>
+             <div class="col-md-4 text-center">
+            <img src="{% static 'assets/images/usama_sir.jpg' %}" alt="Image 1" class="img-fluid" style="border-radius: 100%;height: 40%;width: 40%;margin-bottom: 5%;margin-top: -10%">
+            <h5>CEO - Dr. Usama Mir</h5>
+        </div>
+    </div>
+   <div style="text-align: center; margin-top: 80px; margin-bottom: 10px">
+        <h2>Our Key Features</h2>
+        <p>Our features, are what making us different.</p>
+    </div>
+
+    <div style="text-align: center;">
+        <div style="display: flex; justify-content: center;">
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin: 15px; transition: background-color 0.3s ease; width: 300px; cursor: pointer;"
+                 onmouseover="this.style.backgroundColor='#f0e6ff'; this.style.color='white';"
+                 onmouseout="this.style.backgroundColor=''; this.style.color='';">
+                <h4>User Authentication</h4>
+                <p>The application provides robust user authentication mechanisms to ensure secure access to the banking services.</p>
+            </div>
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin: 15px; transition: background-color 0.3s ease; width: 300px; cursor: pointer;"
+                 onmouseover="this.style.backgroundColor='#f0e6ff'; this.style.color='white';"
+                 onmouseout="this.style.backgroundColor=''; this.style.color='';">
+                <h4>Online KYC Registration</h4>
+                <p>Our platform streamlines the KYC process, allowing users to complete their Know Your Customer verification online.</p>
+            </div>
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin: 15px; transition: background-color 0.3s ease; width: 300px; cursor: pointer;"
+                 onmouseover="this.style.backgroundColor='#f0e6ff';this.style.color='white';"
+                 onmouseout="this.style.backgroundColor=''; this.style.color='';">
+                <h4>Fund Transfer</h4>
+                <p>Users can transfer funds between their own accounts or to other registered accounts within the platform.</p>
+            </div>
+        </div>
+    </div>
+     <div style="text-align: center;">
+        <div style="display: flex; justify-content: center;">
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin: 15px; transition: background-color 0.3s ease; width: 300px; cursor: pointer;"
+                 onmouseover="this.style.backgroundColor='#f0e6ff'; this.style.color='white';"
+                 onmouseout="this.style.backgroundColor=''; this.style.color='';">
+                <h4>Payment Request</h4>
+                <p>The application facilitates payment requests, enabling users to request payments from other account holders.</p>
+            </div>
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin: 15px; transition: background-color 0.3s ease; width: 300px; cursor: pointer;"
+                 onmouseover="this.style.backgroundColor='#f0e6ff'; this.style.color='white';"
+                 onmouseout="this.style.backgroundColor=''; this.style.color='';">
+                <h4>Transaction History</h4>
+                <p>Users have access to their transaction history,
+                    allowing them to view and track all past financial transactions.</p>
+            </div>
+            <div style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; margin: 15px; transition: background-color 0.3s ease; width: 300px; cursor: pointer;"
+                 onmouseover="this.style.backgroundColor='#f0e6ff';this.style.color='white';"
+                 onmouseout="this.style.backgroundColor=''; this.style.color='';">
+                <h4>Card Management</h4>
+                <p>Users can add, update, or remove credit/debit cards associated with their accounts.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
