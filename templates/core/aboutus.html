@@ -1,0 +1,22 @@
+{%  extends 'partials/base.html' %}
+{% load static %}
+{% block title %}
+	HomePage
+{% endblock title%}
+
+{% block content %}
+    <div class="container">
+    <div style="margin-bottom: 10%"></div>
+    <h1>About Us</h1>
+    <p>Our project aims to develop a comprehensive banking application using Django, offering a range of features to facilitate seamless financial transactions and user management. The application encompasses functionalities such as user authentication, online Know Your Customer (KYC) registration, fund transfers, payment requests, transaction history tracking, and management of credit/debit cards.</p>
+
+   <div class="image-container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-4 text-center">
+            <img src="{% static 'assets/images/usama_sir.jpg' %}" alt="Image 1" class="img-fluid" style="border-radius: 100%;height: 50%;width: 50%;margin-top: 10%;margin-bottom: 5%">
+            <h5>CEO - Prof. Usama Mir</h5>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

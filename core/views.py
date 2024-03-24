@@ -11,11 +11,11 @@ from core.forms import SupportCaseForm
 def index(request):
     return render(request,"core/index.html")
 
+def about_us(request):
+    return render(request,"core/aboutus.html")
+
 def contact(request):
     return render(request,"core/contact.html")
-
-def about(request):
-    return render(request,"core/about.html")
 
 def support_page(request):
     if request.method == 'POST':
