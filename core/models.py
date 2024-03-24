@@ -95,3 +95,16 @@ class SupportCase(models.Model):
 
     class Meta:
         ordering = ['created_at']
+
+
+
+class Contact(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    contact_name = models.CharField(max_length=255)
+    account_number = models.CharField(max_length=13)
+
+    class Meta:
+        unique_together =('user', 'contact_name', 'account_number')
+
+    def __str__(self):
+        return self.user

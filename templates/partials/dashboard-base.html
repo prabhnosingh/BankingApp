@@ -56,7 +56,7 @@
                             <i class="fa-solid fa-xmark"></i>
                         </div>
                         <div class="sidebar-logo">
-                          <a href="{% url 'account:dashboard' %}"><img src="{% static 'assets1/images/logo1.jpeg' %}" alt="logo"></a>
+                          <a href="{% url 'core:index' %}"><img src="{% static 'assets/images/logo2.png' %}" alt="logo" style="width:500px"></a>
                         </div>
                         <ul>
                             <li>
@@ -83,6 +83,13 @@ payments
 request_quote
 </span>
                                    Receive
+                                </a>
+                            </li>
+                              <li>
+                                <a href="{% url 'core:save_contact' %}">
+                                    <span class="material-symbols-outlined">
+person
+</span> Add Contacts
                                 </a>
                             </li>
 

@@ -1,9 +1,11 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from account.models import Account
-from core.forms import SupportCaseForm
+from core.forms import SupportCaseForm, ContactForm
+from .models import Contact
 
 
 # Create your views here.
@@ -46,3 +48,27 @@ def support_page(request):
         form = SupportCaseForm(account=account)
 
     return render(request, 'core/support_page.html', {'form': form})
+
+@login_required
+def save_contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+
+            account_number = form.cleaned_data["account_number"]
+            account = Account.objects.filter(account_number=account_number).first()
+            if account:
+                contact = form.save(commit=False)
+                contact.user = request.user
+                print(contact.user)
+                contact.save()
+                return redirect("core:contact_list")  # Redirect to contact list view
+            else:
+                form.add_error("account_number", "Account number not found.")
+    else:
+        form = ContactForm()
+    return render(request, "core/contact_form.html", {"form": form})
+
+def contact_list(request):
+    contacts = Contact.objects.filter(user=request.user)
+    return render(request, "core/contact_list.html", {"contacts": contacts})

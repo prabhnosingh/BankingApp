@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib import messages
 from decimal import Decimal
-from core.models import Transaction
+from core.models import Transaction, Contact
 from decimal import Decimal
 
 
@@ -12,6 +12,7 @@ from decimal import Decimal
 def SearchUsersRequest(request):
     account = Account.objects.all()  ## all the account in my db
     query = request.POST.get("account_number")  ## <input name="account_number">
+    contacts=Contact.objects.filter(user=request.user)
 
     if query:
         account = account.filter(
@@ -23,6 +24,7 @@ def SearchUsersRequest(request):
     context = {
         "account": account,
         "query": query,
+        "contacts": contacts
     }
     return render(request, "payment_request/search-users.html", context)
 
@@ -128,7 +130,7 @@ def settlement_processing(request, account_number, transaction_id):
 
     sender = request.user
     sender_account = request.user.account  ## me,
-
+    reciever_account = account  ## the person i want to send to
     if sender_account.account_status == 'active' and reciever_account.account_status == 'active':
         if request.method == "POST":
             pin_number = request.POST.get("pin-number")

@@ -1,0 +1,59 @@
+<!-- add_contact.html -->
+{% extends "partials/dashboard-base.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+	<section class="dashboard-section body-collapse">
+        <div class="overlay pt-20">
+            <div class="container-fruid">
+             <div class="main-content">
+                    <div class="head-area d-flex align-items-center justify-content-between">
+<h4>ADD Contact</h4>
+                    </div>
+    <ul>
+    {% for contact in existing_contacts %}
+    <li>{{ contact.contact_name }} - {{ contact.account_number }}</li>
+    {% endfor %}
+</ul>
+
+<!-- Your contact form here -->
+<form class="flex-fill" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+     <div class ='right'><button type="submit" style="padding: 10px 30px; border-radius: 10px; background: #802525; color: #fff;">Save</button></div>
+    <div class ='right' style="margin-top:20px"><button type="submit" style="padding: 10px 30px; border-radius: 10px; background: #802525; color: #fff;"><a style="color:white;  text-decoration: none; " href = "{% url 'core:contact_list'%}">View Contacts </a></button></div>
+</form>
+{#    <button> <a class="active" style="border: 1px solid #ccc;margin-top:20px; padding: 8px 12px; text-decoration: none; display: inline-block;" href = "{% url 'core:contact_list'%}">View Contacts </a></button><br/>           #}
+             </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title>Add Contact</title>#}
+{#</head>#}
+{#<body>#}
+{##}
+{##}
+{#<h2>Existing Contacts</h2>#}
+{#<ul>#}
+{#    {% for contact in existing_contacts %}#}
+{#    <li>{{ contact.contact_name }} - {{ contact.account_number }}</li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{##}
+{#<!-- Your contact form here -->#}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Save Contact</button>#}
+{#</form>#}
+{##}
+{##}
+{#    #}
+{#</body>#}
+{#</html>#}
