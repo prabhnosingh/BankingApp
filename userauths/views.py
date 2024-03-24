@@ -95,3 +95,14 @@ def password_reset_confirm(request):
             return render(request, 'userauths/password_reset_confirm.html')
 
     return render(request, 'userauths/password_reset_confirm.html')
+
+def delete_account(request):
+    user = request.user
+    if request.method == 'POST':
+        print("#######################################")
+        print(user)
+        user.delete()
+        logout(request)  # Logout the user after deleting the account
+        messages.success(request, "Account Deleted.")
+        return redirect('core:index')  # Redirect to home or any other page after deletion
+    return redirect('core:index')  # Redirect to an error page if the request method is not POST
