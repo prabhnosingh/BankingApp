@@ -21,7 +21,7 @@
 <form class="flex-fill" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-     <div class ='right'><button type="submit" style="padding: 10px 30px; border-radius: 10px; background: #802525; color: #fff;">Save</button></div>
+     <div class ='right' style="margin-top: 20px"><button type="submit" style="padding: 10px 30px; border-radius: 10px; background: #802525; color: #fff;">Save</button></div>
     <div class ='right' style="margin-top:20px"><button type="submit" style="padding: 10px 30px; border-radius: 10px; background: #802525; color: #fff;"><a style="color:white;  text-decoration: none; " href = "{% url 'core:contact_list'%}">View Contacts </a></button></div>
 </form>
 {#    <button> <a class="active" style="border: 1px solid #ccc;margin-top:20px; padding: 8px 12px; text-decoration: none; display: inline-block;" href = "{% url 'core:contact_list'%}">View Contacts </a></button><br/>           #}
