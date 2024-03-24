@@ -50,7 +50,9 @@ urlpatterns = [
     path("delete_card/<card_id>/", credit_card.delete_card, name="delete_card"),
 
     path('support_page/', views.support_page, name='support_page'),
-    path('about_us',views.about_us, name='about_us'),
+
     path('save_contact/', views.save_contact, name='save_contact'),
     path('contact_list/', views.contact_list, name='contact_list'),
+    path('delete_contact/<int:pk>/', views.delete_contact, name='delete_contact'),
+    path('about_us', views.about_us, name='about_us'),
 ]

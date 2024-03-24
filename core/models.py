@@ -4,6 +4,7 @@ from django.db import models
 from userauths.models import User
 from account.models import Account
 from shortuuid.django_fields import ShortUUIDField
+from django.db.models import UniqueConstraint
 
 TRANSACTION_TYPE = (
     ("transfer", "Transfer"),
@@ -103,8 +104,22 @@ class Contact(models.Model):
     contact_name = models.CharField(max_length=255)
     account_number = models.CharField(max_length=13)
 
+    # class Meta:
+    #     unique_together =('contact_name', 'account_number')
     class Meta:
-        unique_together =('user', 'contact_name', 'account_number')
+        constraints = [
+            UniqueConstraint(
+                fields=['user', 'contact_name'],
+                name='unique_user_contact_name'
+            ),
+            UniqueConstraint(
+                fields=['user', 'account_number'],
+                name='unique_user_account_number'
+            ),
+        ]
+
+    def delete_contact(self):
+        self.delete()
 
     def __str__(self):
         return self.user

@@ -20,6 +20,7 @@
             <tr>
                 <th scope="col">Contact Name</th>
                 <th scope="col">Account Number</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,9 @@
             <tr>
                 <td>{{ contact.contact_name }}</td>
                 <td>{{ contact.account_number }}</td>
+            <td> <form method="post" action="{% url 'core:delete_contact' contact.pk %}">
+      {% csrf_token %}
+      <button type="submit">Delete</button><td>
             </tr>
             {% empty %}
             <tr>
@@ -39,7 +43,7 @@
                                     </div>
     </div>
 
-<!-- Your contact form here -->
+
 
                     
              </div>
