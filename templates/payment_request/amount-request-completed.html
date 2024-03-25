@@ -15,9 +15,7 @@
                     </div>
                     <div class="request-submitted pb-120 text-center">
                         <div class="top-area">
-                            <div class="icon-area">
-                                <img src="{% static 'assets1/images/icon/submitted-icon.png' %}" alt="icon">
-                            </div>
+                            
                             <h3>Sent!</h3>
                             <p>Payment Request <b>{{transaction.transaction_id}}</b> was sent to <b>{{account.user.kyc.full_name}}</b></p>
                             <h5><a href="{% url 'core:transaction-detail' transaction.transaction_id %}"><b>View Detail</b></a> | <a href="{% url 'core:request-search-account' %}"><b>Request Another Payment</b></a></h5>

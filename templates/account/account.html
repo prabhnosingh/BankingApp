@@ -52,12 +52,12 @@
                                 <a href="{% url 'userauths:sign-out' %}">
                                     <span class="material-symbols-outlined">logout</span>Logout
                                 </a>
-                                      {% if account.account_status == "in-active" %}
+
                                <form id="deleteForm" method="post" action="{% url 'userauths:delete_account' %}">
                                     {% csrf_token %}
                                     <a href="#" class="delete" onclick="document.getElementById('deleteForm').submit(); return false;">Delete Account</a>
                                 </form>
-                                            {% endif %}
+
                                 {% endif %}
                             </div>
                         </div>

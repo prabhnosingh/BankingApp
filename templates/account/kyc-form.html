@@ -92,7 +92,7 @@
                         <div class="owner-details">
                             <div class="profile-area">
                                 <div class="profile-img">
-                                    <img src="{% static 'assets1/images/default.jpg' %}" style="border-radius: 50%; width: 100px; height: 100px; " alt="image">
+                                    <img src="{% static 'assets1/images/default.jpg' %}" style="border-radius: 50%; width: 100px; height: 100px; " alt="img">
                                 </div>
                                 <div class="name-area">
                                     <h6>{{request.user.username|title}}</h6>
@@ -120,12 +120,12 @@
                                 <span class="material-symbols-outlined">logout</span>
                                     Logout
                                 </a>
-                                {% if account.account_status == "active" %}
+
                                <form id="deleteForm" method="post" action="{% url 'userauths:delete_account' %}">
                                     {% csrf_token %}
                                     <a href="#" class="delete" onclick="document.getElementById('deleteForm').submit(); return false;">Delete Account</a>
                                 </form>
-                                            {% endif %}
+
                             </div>
                         </div>
                     </div>
@@ -204,17 +204,35 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="single-input">
+                                                <label for="fName">Gender</label>
+                                                <div class="single-input" style="background: 0;
+    border: 1px solid #D5CDEB;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 100%;
+    font-weight: 600;">
                                                    {{form.gender}}
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="single-input">
+                                                <label for="fName">Marital Status</label>
+                                                <div class="single-input" style="background: 0;
+    border: 1px solid #D5CDEB;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 100%;
+    font-weight: 600;">
                                                    {{form.marrital_status}}
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
-                                                <div class="single-input">
+                                                <label for="fName">Identity Type</label>
+                                                <div class="single-input" style="background: 0;
+    border: 1px solid #D5CDEB;
+    border-radius: 20px;
+    padding: 10px 20px;
+    width: 100%;
+    font-weight: 600;">
                                                    {{form.identity_type}}
                                                 </div>
                                             </div>
