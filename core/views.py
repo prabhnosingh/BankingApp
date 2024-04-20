@@ -23,6 +23,7 @@ def contact(request):
 
 def support_page(request):
     if request.method == 'POST':
+        print("I am not ")
         form = SupportCaseForm(request.POST)
         if form.is_valid():
             account_number = request.POST.get('account')
@@ -44,6 +45,7 @@ def support_page(request):
         # Fetching account details from the logged-in user or session
         if request.user.is_authenticated:
             account = Account.objects.get(user=request.user)
+            print("i am authenticated")
         else:
             account = None
 

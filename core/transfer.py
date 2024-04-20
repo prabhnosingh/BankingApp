@@ -52,7 +52,7 @@ def AmountTransfer(request, account_number):
         # Set session variable to indicate payment in progress
         request.session['payment_in_progress'] = True
         # Set session variable to store the timestamp when the session expires
-        request.session['_session_expiry_timestamp'] = int((timezone.now() + timedelta(seconds=20)).timestamp())
+        request.session['_session_expiry_timestamp'] = int((timezone.now() + timedelta(seconds=70)).timestamp())
         print('Session expiry set:', request.session['_session_expiry_timestamp'])
     session_expiry_timestamp = request.session.get('_session_expiry_timestamp')
     print("expiry time----", session_expiry_timestamp);
@@ -75,12 +75,12 @@ def AmountTransferProcess(request, account_number):
         return redirect("core:search-account")
 
 
-    account = Account.objects.get(account_number=account_number)  ## Get the account that the money vould be sent to
-    sender = request.user  # get the person that is logged in
-    reciever = account.user  ##get the of the  person that is going to reciver the money
+    account = Account.objects.get(account_number=account_number)  ## Get the account that the money would be sent to
+    sender = request.user
+    reciever = account.user
 
-    sender_account = request.user.account  ## get the currently logged in users account that vould send the money
-    reciever_account = account  # get the the person account that vould send the money
+    sender_account = request.user.account
+    reciever_account = account
 
     if sender_account.account_status == 'active' and reciever_account.account_status == 'active':
         if request.method == "POST":
@@ -90,7 +90,7 @@ def AmountTransferProcess(request, account_number):
             print(amount)
             print(description)
 
-            if sender_account.account_balance >= Decimal(amount):
+            if sender_account.account_balance :
                 new_transaction = Transaction.objects.create(
                     user=request.user,
                     amount=amount,
@@ -99,7 +99,7 @@ def AmountTransferProcess(request, account_number):
                     sender=sender,
                     sender_account=sender_account,
                     reciever_account=reciever_account,
-                    status="processing",
+                    status="failed",
                     transaction_type="transfer"
                 )
                 new_transaction.save()
@@ -195,3 +195,6 @@ def TransferCompleted(request, account_number, transaction_id):
         "transaction": transaction
     }
     return render(request, "transfer/transfer-completed.html", context)
+
+
+#     if sender_account.user.account.kyc_confirmed:

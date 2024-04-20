@@ -41,8 +41,8 @@ class Account(models.Model):
     account_balance = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     account_number = ShortUUIDField(length=10, max_length=25, prefix="217", alphabet="123456789")
     account_id = ShortUUIDField(length=7, max_length=25, prefix="DEX", alphabet="1234567890")
-    pin_number = ShortUUIDField(length=4, max_length=7, alphabet="1234567890")  # 2737
-    red_code = ShortUUIDField(length=10, max_length=20, alphabet="abcdefgh1234567890")  # 2737|
+    pin_number = ShortUUIDField(length=4, max_length=7, alphabet="1234567890")
+    red_code = ShortUUIDField(length=10, max_length=20, alphabet="abcdefgh1234567890")
     account_status = models.CharField(max_length=100, choices=ACCOUNT_STATUS, default="in-active")
     date = models.DateTimeField(auto_now_add=True)
     kyc_submitted = models.BooleanField(default=False)
