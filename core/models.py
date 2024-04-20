@@ -34,10 +34,12 @@ CARD_TYPE = (
 class Transaction(models.Model):
     transaction_id = ShortUUIDField(unique=True, length=15, max_length=20, prefix="TRN")
 
+    # the user who initiated the transaction
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="user")
     amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     description = models.CharField(max_length=1000, null=True, blank=True)
 
+    # the user who recieved the transaction
     reciever = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="reciever")
     sender = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="sender")
 

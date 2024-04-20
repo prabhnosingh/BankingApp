@@ -15,7 +15,7 @@
                         <div class="section-text text-center">
 <!--                            <h5 class="sub-title">Account</h5>-->
                             <h2 class="title">Welcome to EasyPay</h2>
-{#                            <p class="dont-acc">Already have an account? <a href="{% url 'userauths:sign-in' %}">Login</a></p>#}
+                           <p class="dont-acc">Already have an account? <a href="{% url 'userauths:sign-in' %}">Login</a></p>
                             <!-- <div class="reg-google">
                                 <a href="javascript:void(0)"><i class="fab fa-google"></i>Sign up with Google</a>
                             </div>
@@ -42,7 +42,7 @@
                                         {{form.email}}
                                     </div>
                                     <div class="single-input">
-                                        <label>Enter Password</label>
+                                        <label>Enter Password <span class="password-toggle" title="Password contain at least 8 characters long/ Upper case/ Numeric"><span class="material-symbols-outlined"><b>i</b></span></span></label>
                                         {{form.password1}}
                                     </div>
                                     <div class="single-input">

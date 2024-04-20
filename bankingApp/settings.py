@@ -122,7 +122,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'epay5715@gmail.com'
+EMAIL_HOST_PASSWORD = 'ewcfbpvuolprvrku'
+DEFAULT_FROM_EMAIL = 'epay5715@gmail.com'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -146,6 +152,7 @@ JAZZMIN_SETTINGS = {
     "site_header":"EasyPay",
     "site_brand":"EasyPay...",
     "copyright":"Copyright",
+
     # "order_with_respect_to": ["core",'userauths',"transactions",'addon','blog']
 }
 

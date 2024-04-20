@@ -4024,3 +4024,20 @@ label {
             padding-top: 10%;
             
         }
+
+        .password-toggle {
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.password-toggle:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    margin-left: 10px;
+}
