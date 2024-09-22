@@ -1,5 +1,5 @@
 # Easy Pay Banking Application
-This repository contains a project related to banking web application that focuses on a Unified Payments Interface(UPI)-style payment system.
+This repository contains a project related to banking web application that focuses on a Unified Payments Interface(UPI)-style payment system.  
 
 # Installation guide
 To install dependencies run:
